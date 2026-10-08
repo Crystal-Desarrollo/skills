@@ -1,0 +1,115 @@
+{
+  "purpose": "Example audit decisions. Fixtures are data; structural tests do not execute a model.",
+  "scenarios": [
+    {
+      "id": "no-configuration",
+      "mode": "full",
+      "scope": "all",
+      "configuration": null,
+      "files": [{"path": "src/page.tsx", "source": "export function Page() { return <button>Save</button> }"}],
+      "expected": {"response": "shadcn is not configured", "findings": [], "exceptions": []}
+    },
+    {
+      "id": "component-only-opportunity",
+      "mode": "component-only",
+      "scope": "src/page.tsx",
+      "configuration": {"react": true, "base": "radix", "aliases": {"ui": "~/ui"}, "components": ["button"]},
+      "files": [{"path": "src/page.tsx", "source": "export function Page() { return <button className=\"bg-blue-500\">Save</button> }"}],
+      "expected": {"source_coverage": "complete", "findings": [{"file": "src/page.tsx", "line": 1, "rule": "C01", "category": "opportunity", "severity": "advisory"}], "exceptions": [], "notes": ["Suggest existing Button only after checking equivalent styling and submit behavior.", "Do not run F06 for the raw color in component-only mode."]}
+    },
+    {
+      "id": "explicit-adoption-rule",
+      "mode": "component-only",
+      "scope": "src/page.tsx",
+      "configuration": {"react": true, "base": "radix", "components": ["button"]},
+      "project_rules": ["Visible submit actions use the owned Button component."],
+      "files": [{"path": "src/page.tsx", "source": "export function Page() { return <button type=\"submit\">Save</button> }"}],
+      "expected": {"source_coverage": "complete", "findings": [{"file": "src/page.tsx", "line": 1, "rule": "C01", "category": "violation", "severity": "low"}], "exceptions": [], "notes": ["Preserve type=submit and existing appearance."]}
+    },
+    {
+      "id": "scoped-shared-wrapper",
+      "mode": "full",
+      "scope": "src/checkout/**",
+      "configuration": {"react": true, "base": "radix", "aliases": {"ui": "@workspace/ui"}, "components": ["button"]},
+      "files": [
+        {"path": "src/checkout/page.tsx", "source": "import { SaveButton } from '@workspace/ui/save-button'\nexport function Page() { return <SaveButton /> }"},
+        {"path": "packages/ui/save-button.tsx", "role": "context", "source": "import { Button } from './button'\nexport function SaveButton() { return <Button>Save</Button> }"},
+        {"path": "src/admin/page.tsx", "role": "excluded", "source": "export function Admin() { return <button>Delete</button> }"}
+      ],
+      "expected": {"source_coverage": "complete", "findings": [], "exceptions": [], "notes": ["The wrapper already adopts Button.", "Do not report admin or shared-package locations outside scope.", "List the wrapper as context only and admin as excluded."]}
+    },
+    {
+      "id": "radix-nested-button",
+      "mode": "full",
+      "scope": "src/dialog.tsx",
+      "configuration": {"react": true, "base": "radix", "components": ["dialog", "button"], "local_contract": "DialogTrigger renders a button by default and supports asChild. Button renders a button."},
+      "files": [{"path": "src/dialog.tsx", "source": "export function Trigger() { return <DialogTrigger><Button>Open</Button></DialogTrigger> }"}],
+      "expected": {"source_coverage": "complete", "findings": [{"file": "src/dialog.tsx", "line": 1, "rule": "F02", "category": "violation", "severity": "medium"}], "exceptions": [], "notes": ["Recommend supported asChild composition, not Base UI render.", "Do not infer a missing dialog title from this isolated trigger helper."]}
+    },
+    {
+      "id": "base-render-valid",
+      "mode": "full",
+      "scope": "src/dialog.tsx",
+      "configuration": {"react": true, "base": "base-ui", "components": ["dialog", "button"], "local_contract": "DialogTrigger supports render with Button. The content title exists in the owning dialog."},
+      "files": [{"path": "src/dialog.tsx", "source": "export function Trigger() { return <DialogTrigger render={<Button />}>Open</DialogTrigger> }"}],
+      "expected": {"source_coverage": "complete", "findings": [], "exceptions": [], "notes": ["Do not recommend asChild for this Base UI implementation."]}
+    },
+    {
+      "id": "accepted-specialized-widget",
+      "mode": "full",
+      "scope": "src/map.tsx",
+      "configuration": {"react": true, "base": "radix", "components": ["slider"]},
+      "project_rules": ["Keep MapZoom custom: it implements continuous pointer capture required by the map SDK."],
+      "files": [{"path": "src/map.tsx", "source": "export function Map() { return <MapZoom /> }"}],
+      "expected": {"source_coverage": "complete", "findings": [], "exceptions": [{"file": "src/map.tsx", "line": 1, "rule": "C01", "evidence": "Explicit map SDK requirement in project rules."}], "notes": ["Do not replace MapZoom with Slider without design and behavior review."]}
+    },
+    {
+      "id": "non-variable-theme-valid",
+      "mode": "full",
+      "scope": "src/page.tsx",
+      "configuration": {"react": true, "base": "radix", "cssVariables": false, "components": ["button"], "local_contract": "Owned Button uses inline Tailwind colors and dark utilities."},
+      "files": [{"path": "src/page.tsx", "source": "export function Page() { return <div className=\"bg-zinc-950 text-zinc-50 dark:bg-white dark:text-zinc-950\">Hello</div> }"}],
+      "expected": {"source_coverage": "complete", "findings": [], "exceptions": [], "notes": ["F06 does not impose CSS-variable tokens on this configuration.", "A normal layout div does not require Card."]}
+    },
+    {
+      "id": "partial-coverage",
+      "mode": "full",
+      "scope": "src/**",
+      "configuration": {"react": true, "base": "unknown", "components": ["button"]},
+      "documentation": "unavailable",
+      "files": [
+        {"path": "src/page.tsx", "source": "export function Page() { return <Button>Save</Button> }"},
+        {"path": "src/blocked.tsx", "source": null, "role": "blocked"}
+      ],
+      "expected": {"source_coverage": "incomplete", "findings": [], "exceptions": [], "notes": ["List the unreadable file as blocked and unknown API checks as unverified.", "Continue supported checks; do not claim complete coverage or compliance.", "Source inspection does not verify runtime or appearance."]}
+    },
+    {
+      "id": "valid-native-hidden-input",
+      "mode": "component-only",
+      "scope": "src/form.tsx",
+      "configuration": {"react": true, "base": "radix", "components": ["input"]},
+      "files": [{"path": "src/form.tsx", "source": "export function Token() { return <input type=\"hidden\" name=\"token\" value=\"fixture\" /> }"}],
+      "expected": {"source_coverage": "complete", "findings": [], "exceptions": [], "notes": ["Native hidden input is valid; an Input replacement adds no adoption value."]}
+    },
+    {
+      "id": "owned-primitive-included",
+      "mode": "full",
+      "scope": "all",
+      "configuration": {"react": true, "base": "radix", "components": ["button"]},
+      "project_rules": ["Visible action buttons require an accessible name."],
+      "files": [{"path": "src/ui/button.tsx", "source": "export function IconAction() { return <button><svg aria-hidden=\"true\" /></button> }"}],
+      "expected": {"source_coverage": "complete", "findings": [{"file": "src/ui/button.tsx", "line": 1, "rule": "F04", "category": "violation", "severity": "medium"}], "exceptions": [], "notes": ["Owned primitive source belongs to whole-codebase coverage.", "Recommend an accessible name without changing the icon appearance.", "Do not report its native button as missing shadcn adoption."]}
+    },
+    {
+      "id": "ambiguous-feature",
+      "mode": "full",
+      "scope": "account feature",
+      "configuration": {"react": true, "base": "radix", "components": ["button"]},
+      "files": [
+        {"path": "src/accounts/admin.tsx", "source": "export function Admin() { return <Button>Save</Button> }"},
+        {"path": "src/account/profile.tsx", "source": "export function Profile() { return <Button>Save</Button> }"}
+      ],
+      "expected": {"clarification_required": true, "findings": [], "exceptions": [], "notes": ["Ask whether account means administration, self-service profile, or both before freezing the scope."]}
+    }
+  ]
+}
