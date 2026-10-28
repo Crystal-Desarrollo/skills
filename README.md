@@ -2,6 +2,18 @@
 
 Portable agent skills from Crystal Desarrollo. Install with the Skills CLI.
 
+## Company CLI (local, unpublished)
+
+From this repository, build and list the approved catalog:
+
+```bash
+pnpm install
+pnpm build
+node dist/cli.js list
+```
+
+Use `node dist/cli.js init` for interactive selection. The command installs to OpenCode by default; repeat `--agent` to select other supported agents. See [the CLI guide](docs/company-skills-cli.md) for selection, update, provenance, and safety details.
+
 ## Install
 
 Run this command from the project where you want to use the skill:
