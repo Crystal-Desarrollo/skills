@@ -1,0 +1,18 @@
+{
+  "name": "@crystal-desarrollo/skills",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "private": true,
+  "description": "Company-approved agent skills installer",
+  "type": "module",
+  "bin": { "crystal-skills": "dist/cli.js" },
+  "scripts": {
+    "test": "node --import tsx --test tests/cli/*.test.ts tests/catalog-updates.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc",
+    "prepare": "tsc"
+  },
+  "engines": { "node": ">=22.20.0" },
+  "dependencies": { "ink": "8.0.0", "react": "19.3.1" },
+  "devDependencies": { "@types/node": "24.10.0", "@types/react": "19.2.7", "ink-testing-library": "4.0.0", "tsx": "4.23.15", "typescript": "7.0.2" }
+}
