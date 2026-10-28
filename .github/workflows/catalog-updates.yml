@@ -1,0 +1,36 @@
+name: Propose catalog updates
+
+on:
+  schedule:
+    - cron: '23 9 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: catalog-updates
+  cancel-in-progress: false
+
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Propose catalog revision updates
+        run: node scripts/catalog-updates.mjs --write
+      - uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676
+        with:
+          token: ${{ github.token }}
+          branch: automation/catalog-updates
+          delete-branch: false
+          add-paths: catalog.json
+          title: 'Propose approved skill catalog updates'
+          commit-message: 'Propose approved skill catalog updates'
+          body: |
+            This pull request proposes public upstream revision updates.
+
+            Review the source, content, and license links before merging. This workflow does not merge changes or install skills into consumer projects.

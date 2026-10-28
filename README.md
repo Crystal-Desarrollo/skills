@@ -12,7 +12,11 @@ pnpm build
 node dist/cli.js list
 ```
 
-Use `node dist/cli.js init` for interactive selection. The command installs to OpenCode by default; repeat `--agent` to select other supported agents. See [the CLI guide](docs/company-skills-cli.md) for selection, update, provenance, and safety details.
+From the target project, run `node /absolute/path/to/skills/dist/cli.js init --commit` for interactive selection and a scoped commit. Replace the path with this checkout's path. The command installs to OpenCode by default; repeat `--agent` to select other supported agents. See [the CLI guide](docs/company-skills-cli.md) for selection, update, provenance, and safety details.
+
+## Company skill updates
+
+The monthly workflow proposes approved catalog revisions without automatic merging. See [catalog maintenance](docs/catalog-maintenance.md).
 
 ## Install
 
@@ -59,6 +63,9 @@ Findings outside the selected scope are not included. Shared components can be r
 ## Maintain
 
 ```bash
+pnpm test
+pnpm typecheck
+pnpm build
 python3 -m unittest discover -s tests -v
 pnpm dlx skills add . --list
 ```

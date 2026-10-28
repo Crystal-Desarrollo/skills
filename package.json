@@ -7,7 +7,7 @@
   "type": "module",
   "bin": { "crystal-skills": "dist/cli.js" },
   "scripts": {
-    "test": "node --import tsx --test tests/cli/*.test.ts",
+    "test": "node --import tsx --test tests/cli/*.test.ts tests/catalog-updates.test.mjs",
     "typecheck": "tsc --noEmit",
     "build": "tsc",
     "prepare": "tsc"
