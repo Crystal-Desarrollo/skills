@@ -1,26 +1,24 @@
 # Crystal skills
 
-Portable agent skills from Crystal Desarrollo. Install with the Skills CLI.
+Company-owned skills and an approved third-party catalog from Crystal Desarrollo.
 
-## Company CLI (local, unpublished)
+## Install from the company catalog
 
-From this repository, build and list the approved catalog:
+Run from the target project. Select skills with the checkboxes, then press Enter:
 
 ```bash
-pnpm install
-pnpm build
-node dist/cli.js list
+pnpm --package=github:Crystal-Desarrollo/skills dlx crystal-skills init --commit
 ```
 
-From the target project, run `node /absolute/path/to/skills/dist/cli.js init --commit` for interactive selection and a scoped commit. Replace the path with this checkout's path. The command installs to OpenCode by default; repeat `--agent` to select other supported agents. See [the CLI guide](docs/company-skills-cli.md) for selection, update, provenance, and safety details.
+This uses the GitHub package directly. It needs no local checkout, npm publication, or consumer compiler build. The command installs to OpenCode by default; repeat `--agent` to select other supported agents. Omit `--commit` to leave generated files uncommitted. See [the CLI guide](docs/company-skills-cli.md) for selection, update, provenance, and safety details.
 
 ## Company skill updates
 
 The monthly workflow proposes approved catalog revisions without automatic merging. See [catalog maintenance](docs/catalog-maintenance.md).
 
-## Install
+## Install only the owned audit skill
 
-Run this command from the project where you want to use the skill:
+The stock Skills CLI discovers skill folders, not the company catalog. This command installs only `shadcn-audit`:
 
 ```bash
 pnpm dlx skills add Crystal-Desarrollo/skills --skill shadcn-audit
@@ -62,13 +60,18 @@ Findings outside the selected scope are not included. Shared components can be r
 
 ## Maintain
 
+Install development dependencies, build, then run the checks:
+
 ```bash
+pnpm install --frozen-lockfile --ignore-scripts
+pnpm build
 pnpm test
 pnpm typecheck
-pnpm build
 python3 -m unittest discover -s tests -v
 pnpm dlx skills add . --list
 ```
+
+Commit `dist/cli.js` when changing `src/cli.tsx`. Distribution tests compare the runtime with a fresh TypeScript build and check the package contents. The committed runtime avoids Git dependency build approvals on consumer machines.
 
 Tests validate metadata, local links, rule IDs, and scenario contracts.
 They do not execute a model or prove visual, runtime, or audit accuracy.
