@@ -6,11 +6,11 @@
   "description": "Company-approved agent skills installer",
   "type": "module",
   "bin": { "crystal-skills": "dist/cli.js" },
+  "files": ["dist/cli.js", "catalog.json", "LICENSE", "README.md"],
   "scripts": {
-    "test": "node --import tsx --test tests/cli/*.test.ts tests/catalog-updates.test.mjs",
+    "test": "node --import tsx --test tests/cli/*.test.ts tests/catalog-updates.test.mjs tests/distribution.test.mjs",
     "typecheck": "tsc --noEmit",
-    "build": "tsc",
-    "prepare": "tsc"
+    "build": "tsc"
   },
   "engines": { "node": ">=22.20.0" },
   "dependencies": { "ink": "8.0.0", "react": "19.3.1" },
