@@ -10,7 +10,9 @@ Run the stock Skills CLI from your project and select the skills to install:
 pnpm dlx skills add Crystal-Desarrollo/skills
 ```
 
-The repository contains 56 discoverable skills: the owned audit skill and 55 licensed third-party snapshots. Each third-party skill includes its supporting files, upstream license, and pinned provenance. The stock command does not make a commit.
+The repository contains 45 discoverable skills: the owned audit skill and 44 licensed third-party snapshots. The picker groups them by author and sorts skills alphabetically within each group. Each third-party skill includes its supporting files, upstream license, and pinned provenance. The stock command does not make a commit.
+
+Author groups are Antfu, Crystal Desarrollo, Matt Pocock, Shadcn, Vercel Labs, and Wshobson. Matt's selection contains only his 27 published Engineering and Productivity skills; the 11 skills shown as `Other` in his upstream installer are excluded. Monthly sync preserves this explicit selection.
 
 The two upstream `code-review` skills use unique names: `mattpocock-skills-code-review` and `vercel-labs-open-agents-code-review`. Three catalog entries remain unavailable until their license provenance is approved.
 

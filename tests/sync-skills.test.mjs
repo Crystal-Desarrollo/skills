@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, readFile, writeFile, readdir, symlink, chmod, lstat } from 'node:fs/promises';
+import { mkdtemp, mkdir, readFile, writeFile, readdir, symlink, chmod, lstat, unlink, readlink } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import os from 'node:os';
 import path from 'node:path';
@@ -50,6 +50,7 @@ async function bytes(root) {
     for (const entry of await readdir(dir, { withFileTypes: true })) {
       const p = path.join(dir, entry.name), relative = path.relative(root, p);
       if (entry.isDirectory()) await walk(p);
+      else if (entry.isSymbolicLink()) result[relative] = { link: await readlink(p) };
       else result[relative] = { bytes: (await readFile(p)).toString('base64'), mode: (await lstat(p)).mode & 0o777 };
     }
   }
@@ -169,4 +170,53 @@ test('a local edit during downloads is retained and blocks replacement', async (
   assert.equal(result.code, 1); assert.match(result.stderr, /modified|changed/i);
   assert.equal(await readFile(file, 'utf8'), 'edit during sync');
   assert.deepEqual(await readFile(path.join(root, 'catalog.json')), catalogBefore);
+});
+
+test('native author groups combine repositories, sort names, and preserve installed skill names in every sync mode', async (t) => {
+  const root = await fixture(t, [source('vercel-labs'), { ...source('vercel-labs'), id: 'vercel-labs/other' }, source('mattpocock')]);
+  const file = path.join(root, '.claude-plugin/marketplace.json');
+  for (const args of [[], ['--update']]) {
+    const result = await invoke(root, args, network()); assert.equal(result.code, 0, result.stderr);
+    const marketplace = JSON.parse(await readFile(file));
+    assert.deepEqual(marketplace.plugins.map((plugin) => plugin.name), ['matt-pocock', 'vercel-labs']);
+    assert.equal(marketplace.plugins[1].skills.length, 2);
+    for (const plugin of marketplace.plugins) {
+      assert.equal(plugin.source, './');
+      assert.deepEqual(plugin.skills, [...plugin.skills].sort());
+      for (const skillPath of plugin.skills) assert.ok((await readFile(path.join(root, skillPath, 'SKILL.md'), 'utf8')).includes('name: '));
+    }
+    const before = await bytes(root);
+    assert.equal((await invoke(root, ['--check'], { fetchImpl: () => { throw Error('offline'); } })).code, 0);
+    assert.deepEqual(await bytes(root), before);
+  }
+});
+
+test('locally edited, missing, symlinked, or unmanaged grouping metadata blocks sync and is preserved', async (t) => {
+  for (const kind of ['edit', 'mode', 'missing', 'symlink', 'unmanaged', 'parent-link']) {
+    const root = await fixture(t), file = path.join(root, '.claude-plugin/marketplace.json');
+    if (!['unmanaged', 'parent-link'].includes(kind)) assert.equal((await invoke(root, [], network())).code, 0);
+    if (kind === 'edit') await writeFile(file, '{"plugins":[]}');
+    if (kind === 'mode') await chmod(file, 0o755);
+    if (kind === 'missing') await unlink(file);
+    if (kind === 'symlink') { await unlink(file); await symlink(path.join(root, 'catalog.json'), file); }
+    if (kind === 'unmanaged') { await mkdir(path.dirname(file)); await writeFile(file, 'local configuration'); }
+    if (kind === 'parent-link') await symlink(path.join(root, 'skills'), path.dirname(file));
+    const before = await bytes(root);
+    for (const args of [[], ['--update'], ['--check']]) {
+      const result = await invoke(root, args, network()); assert.equal(result.code, 1, kind);
+      assert.equal(result.stdout, '');
+      assert.match(result.stderr, /group|marketplace|symlink|directory|snapshots/i);
+      assert.deepEqual(await bytes(root), before);
+    }
+  }
+});
+
+test('replacement failure restores existing author metadata when catalog selection changes', async (t) => {
+  const root = await fixture(t); assert.equal((await invoke(root, [], network())).code, 0);
+  const file = path.join(root, 'catalog.json'), catalog = JSON.parse(await readFile(file));
+  catalog.sources.push(source('other')); await writeFile(file, JSON.stringify(catalog));
+  const before = await bytes(root); let stderr = '';
+  const code = await runCli(['--update'], { root, ...network(), stdout: () => { throw Error('output failure'); }, stderr: (s) => { stderr += s; } });
+  assert.equal(code, 1); assert.match(stderr, /output failure/);
+  assert.deepEqual(await bytes(root), before);
 });

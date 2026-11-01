@@ -46,7 +46,7 @@ The project stores source-qualified choices and SHA-256 provenance in `.company-
 
 ## Catalog provenance
 
-The recovered original list does not specify a Matt Pocock subset. The catalog therefore records every skill present at its verified pin. `vercel-labs/agent-skills` remains unavailable because the pinned tree has no root license notice; its listed skill identities remain visible, with the missing notice explained. All enabled sources use verified immutable commits and license files. The company skill uses publicly verified baseline `fe79416fc1a52130bdb7184f34e8b84fd81e900d`.
+The Matt Pocock selection contains the 27 Engineering and Productivity skills declared in his pinned plugin manifest. The 11 ungrouped `Other` skills are excluded from both the catalog and snapshots. The stock installer groups the selected snapshots by author without changing installed names. `vercel-labs/agent-skills` remains unavailable because the pinned tree has no root license notice; its listed skill identities remain visible, with the missing notice explained. All enabled sources use verified immutable commits and license files. The company skill uses publicly verified baseline `fe79416fc1a52130bdb7184f34e8b84fd81e900d`.
 
 Pins are reviewed source snapshots, not endorsements of upstream safety. Review the exact skill content and license notice before approving catalog changes. The package requires Node.js 22.20 or newer.
 

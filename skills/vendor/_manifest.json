@@ -1,6 +1,10 @@
 {
   "schemaVersion": 1,
-  "catalogSha256": "c3caacbb635de5897e8435a5986c2443597ee0a7bf8da82235c32059522da7d1",
+  "catalogSha256": "92e928dd9d83d7af56495990e2db4f2061f5909ce2ecdb053a2e040cbb8bd899",
+  "marketplace": {
+    "sha256": "25fd24b6bc32561a38a6dd7f9067a8ead7d10d3852faf0d1bb008b01e66bff93",
+    "mode": 420
+  },
   "skills": [
     {
       "source": "mattpocock/skills",
@@ -243,138 +247,6 @@
       "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/wizard"
-    },
-    {
-      "source": "mattpocock/skills",
-      "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
-      "sourcePath": "skills/in-progress/chief-of-staff",
-      "originalName": "chief-of-staff",
-      "installedName": "chief-of-staff",
-      "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
-      "adaptations": [],
-      "target": "mattpocock-skills/chief-of-staff"
-    },
-    {
-      "source": "mattpocock/skills",
-      "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
-      "sourcePath": "skills/in-progress/claude-handoff",
-      "originalName": "claude-handoff",
-      "installedName": "claude-handoff",
-      "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
-      "adaptations": [],
-      "target": "mattpocock-skills/claude-handoff"
-    },
-    {
-      "source": "mattpocock/skills",
-      "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
-      "sourcePath": "skills/in-progress/loop-me",
-      "originalName": "loop-me",
-      "installedName": "loop-me",
-      "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
-      "adaptations": [],
-      "target": "mattpocock-skills/loop-me"
-    },
-    {
-      "source": "mattpocock/skills",
-      "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
-      "sourcePath": "skills/in-progress/setup-ts-deep-modules",
-      "originalName": "setup-ts-deep-modules",
-      "installedName": "setup-ts-deep-modules",
-      "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
-      "adaptations": [],
-      "target": "mattpocock-skills/setup-ts-deep-modules"
-    },
-    {
-      "source": "mattpocock/skills",
-      "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
-      "sourcePath": "skills/in-progress/writing-beats",
-      "originalName": "writing-beats",
-      "installedName": "writing-beats",
-      "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
-      "adaptations": [],
-      "target": "mattpocock-skills/writing-beats"
-    },
-    {
-      "source": "mattpocock/skills",
-      "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
-      "sourcePath": "skills/in-progress/writing-fragments",
-      "originalName": "writing-fragments",
-      "installedName": "writing-fragments",
-      "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
-      "adaptations": [],
-      "target": "mattpocock-skills/writing-fragments"
-    },
-    {
-      "source": "mattpocock/skills",
-      "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
-      "sourcePath": "skills/in-progress/writing-shape",
-      "originalName": "writing-shape",
-      "installedName": "writing-shape",
-      "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
-      "adaptations": [],
-      "target": "mattpocock-skills/writing-shape"
-    },
-    {
-      "source": "mattpocock/skills",
-      "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
-      "sourcePath": "skills/misc/git-guardrails-claude-code",
-      "originalName": "git-guardrails-claude-code",
-      "installedName": "git-guardrails-claude-code",
-      "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
-      "adaptations": [],
-      "target": "mattpocock-skills/git-guardrails-claude-code"
-    },
-    {
-      "source": "mattpocock/skills",
-      "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
-      "sourcePath": "skills/misc/migrate-to-shoehorn",
-      "originalName": "migrate-to-shoehorn",
-      "installedName": "migrate-to-shoehorn",
-      "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
-      "adaptations": [],
-      "target": "mattpocock-skills/migrate-to-shoehorn"
-    },
-    {
-      "source": "mattpocock/skills",
-      "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
-      "sourcePath": "skills/misc/scaffold-exercises",
-      "originalName": "scaffold-exercises",
-      "installedName": "scaffold-exercises",
-      "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
-      "adaptations": [],
-      "target": "mattpocock-skills/scaffold-exercises"
-    },
-    {
-      "source": "mattpocock/skills",
-      "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
-      "sourcePath": "skills/misc/setup-pre-commit",
-      "originalName": "setup-pre-commit",
-      "installedName": "setup-pre-commit",
-      "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
-      "adaptations": [],
-      "target": "mattpocock-skills/setup-pre-commit"
     },
     {
       "source": "mattpocock/skills",
@@ -912,38 +784,6 @@
       "sha256": "1371f5ce005de0992a44b137748bfb960a56948aa9871b405fe9d90b24332e3c",
       "mode": 420
     },
-    "mattpocock-skills/chief-of-staff/agents/openai.yaml": {
-      "sha256": "c0f68ed9da6977adc97a791be3bb0830d301b2d27f9c635d92d6f325bffefb83",
-      "mode": 420
-    },
-    "mattpocock-skills/chief-of-staff/LICENSE.upstream": {
-      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "mode": 420
-    },
-    "mattpocock-skills/chief-of-staff/PROVENANCE.json": {
-      "sha256": "c30386656b0770445d669df275aaeb7ca68f92d1e482eee53b1a0f48f030bd26",
-      "mode": 420
-    },
-    "mattpocock-skills/chief-of-staff/SKILL.md": {
-      "sha256": "a187d9e36e65373d2d1f469790858dd57d6eb72b6ea16932df9c40616ac9f720",
-      "mode": 420
-    },
-    "mattpocock-skills/claude-handoff/agents/openai.yaml": {
-      "sha256": "2308a672978864633286fb9f0792b08657e501426b3f7883fc418d5d2eac5eb0",
-      "mode": 420
-    },
-    "mattpocock-skills/claude-handoff/LICENSE.upstream": {
-      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "mode": 420
-    },
-    "mattpocock-skills/claude-handoff/PROVENANCE.json": {
-      "sha256": "9acb1faba913a0fa5ab9430136384cf6ba201850aba79b4f86649a86e8b335a9",
-      "mode": 420
-    },
-    "mattpocock-skills/claude-handoff/SKILL.md": {
-      "sha256": "79357a18425d66d4c24048bedf83dceb79d3bba356f38014950f764a7fab4026",
-      "mode": 420
-    },
     "mattpocock-skills/codebase-design/agents/openai.yaml": {
       "sha256": "edebc9e4fcfe102114012575eaa9600b9b5fd08c311664f389c36e7bc717740f",
       "mode": 420
@@ -1010,26 +850,6 @@
     },
     "mattpocock-skills/domain-modeling/SKILL.md": {
       "sha256": "7b925d7b1e341a2eeae33ad68a8a8c0ab889a38ddd22a7598e4c240e5a7556a3",
-      "mode": 420
-    },
-    "mattpocock-skills/git-guardrails-claude-code/agents/openai.yaml": {
-      "sha256": "d53cd783fc0ac208dec9a4c267989284384785aab6422dccdaed42f9e40243ec",
-      "mode": 420
-    },
-    "mattpocock-skills/git-guardrails-claude-code/LICENSE.upstream": {
-      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "mode": 420
-    },
-    "mattpocock-skills/git-guardrails-claude-code/PROVENANCE.json": {
-      "sha256": "5009e5ef7d04effb7169673dd9aa1125e1e1ec8cc4e7de6937fd2dee2b1f692b",
-      "mode": 420
-    },
-    "mattpocock-skills/git-guardrails-claude-code/scripts/block-dangerous-git.sh": {
-      "sha256": "234922b83c0a1737ee7300806c21ac0f389b07aaeb65c2d71ccedafbc5e1ea4b",
-      "mode": 493
-    },
-    "mattpocock-skills/git-guardrails-claude-code/SKILL.md": {
-      "sha256": "69b291d655626a01602b998a1836fcb93c058ede68dfafddfd71e87f17074764",
       "mode": 420
     },
     "mattpocock-skills/grill-me/agents/openai.yaml": {
@@ -1148,22 +968,6 @@
       "sha256": "552240a5ab5cec6b67c15dd1ad6e9f6962b1bca6ce870059a8c2713760c20392",
       "mode": 420
     },
-    "mattpocock-skills/loop-me/agents/openai.yaml": {
-      "sha256": "b66fa10079957051be6a812f45e55b67ac394b71d5ba88349962b4c9205802c3",
-      "mode": 420
-    },
-    "mattpocock-skills/loop-me/LICENSE.upstream": {
-      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "mode": 420
-    },
-    "mattpocock-skills/loop-me/PROVENANCE.json": {
-      "sha256": "c558f9222a7c19bd3c6f0e8c417aa23b0a3e7ac4b21f0be03ddff6c1f19c9449",
-      "mode": 420
-    },
-    "mattpocock-skills/loop-me/SKILL.md": {
-      "sha256": "e44d1cc3e760fb86ac42964c2a5f1fcac511715db50fb375f3f7be814de1eaa7",
-      "mode": 420
-    },
     "mattpocock-skills/mattpocock-skills-code-review/agents/openai.yaml": {
       "sha256": "8229ca854e11dc8e6aef2131ee03f31fb1561cf905fab9ccc325180cf3331352",
       "mode": 420
@@ -1178,22 +982,6 @@
     },
     "mattpocock-skills/mattpocock-skills-code-review/SKILL.md": {
       "sha256": "54b9a57a92684b3a4b5107bb851d3379c9dc080ed0e8c605a2f65d6963ccc0e6",
-      "mode": 420
-    },
-    "mattpocock-skills/migrate-to-shoehorn/agents/openai.yaml": {
-      "sha256": "395c2db852e66a199f1cd07f7ed92d66cb6f0787460c5475926f1a5e778b699d",
-      "mode": 420
-    },
-    "mattpocock-skills/migrate-to-shoehorn/LICENSE.upstream": {
-      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "mode": 420
-    },
-    "mattpocock-skills/migrate-to-shoehorn/PROVENANCE.json": {
-      "sha256": "45610100d0460c2911efa8dda4e611ba3dfc6bf0775e6aeda3bb2c0acb1ed0ee",
-      "mode": 420
-    },
-    "mattpocock-skills/migrate-to-shoehorn/SKILL.md": {
-      "sha256": "de4da4c11d924fac79c924b2ee3d2db4a5cb98386eb490a599119463d036ae72",
       "mode": 420
     },
     "mattpocock-skills/pr/agents/openai.yaml": {
@@ -1272,22 +1060,6 @@
       "sha256": "33fbc28568e3146f20fd908b12998bc0ab30aa4f4c87288199a40793efa94696",
       "mode": 420
     },
-    "mattpocock-skills/scaffold-exercises/agents/openai.yaml": {
-      "sha256": "525b33913340bea7947ad2de17f2a7c5fb94be543345fe80ae753b9a44ba601d",
-      "mode": 420
-    },
-    "mattpocock-skills/scaffold-exercises/LICENSE.upstream": {
-      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "mode": 420
-    },
-    "mattpocock-skills/scaffold-exercises/PROVENANCE.json": {
-      "sha256": "c2dbb7dffdcaa284e4f42189b93d3a2412fcc67799652350853e257a98653580",
-      "mode": 420
-    },
-    "mattpocock-skills/scaffold-exercises/SKILL.md": {
-      "sha256": "75f5c9d771606fb9762f16522efc954df11c324f87148d8ff069bce166257de9",
-      "mode": 420
-    },
     "mattpocock-skills/setup-matt-pocock-skills/agents/openai.yaml": {
       "sha256": "9527de0110541c45712319025155aeab8dc7d77c6ed6e5e83271bab1851ab939",
       "mode": 420
@@ -1322,42 +1094,6 @@
     },
     "mattpocock-skills/setup-matt-pocock-skills/triage-labels.md": {
       "sha256": "ae512af838c78b8750471c42cd2b20fa32319553e61d84c9a23d171b40ce14aa",
-      "mode": 420
-    },
-    "mattpocock-skills/setup-pre-commit/agents/openai.yaml": {
-      "sha256": "acf41db398c5c43afe504008bb7d615a97b6498b0f1f6c5b2395254c0bfb57d1",
-      "mode": 420
-    },
-    "mattpocock-skills/setup-pre-commit/LICENSE.upstream": {
-      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "mode": 420
-    },
-    "mattpocock-skills/setup-pre-commit/PROVENANCE.json": {
-      "sha256": "50c03e76bca55b2d243dcb26ffc687d28e014bb0562bfd2ca38a90f76b9679bb",
-      "mode": 420
-    },
-    "mattpocock-skills/setup-pre-commit/SKILL.md": {
-      "sha256": "c9819d7f1e3b198064edc1faa3154224ed67395e9f07f5d3cea4b67cf0a11a98",
-      "mode": 420
-    },
-    "mattpocock-skills/setup-ts-deep-modules/agents/openai.yaml": {
-      "sha256": "159f680217d50747702620c05fd65734a152185b3219a8ca5ee4630878a354fa",
-      "mode": 420
-    },
-    "mattpocock-skills/setup-ts-deep-modules/dependency-cruiser.config.cjs": {
-      "sha256": "3c4973bec69f73b2117654abf9e666a7c28665b213be20e6d39869e29842428e",
-      "mode": 420
-    },
-    "mattpocock-skills/setup-ts-deep-modules/LICENSE.upstream": {
-      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "mode": 420
-    },
-    "mattpocock-skills/setup-ts-deep-modules/PROVENANCE.json": {
-      "sha256": "0c0de0511b2afb18f31809a24dacdf10969c71aa93edc7e82b7522360de35c88",
-      "mode": 420
-    },
-    "mattpocock-skills/setup-ts-deep-modules/SKILL.md": {
-      "sha256": "29acca66ac99d4532e2a6f0370d8125d7cba1e87c9ac66573203c75189d3e6c7",
       "mode": 420
     },
     "mattpocock-skills/tdd/agents/openai.yaml": {
@@ -1540,22 +1276,6 @@
       "sha256": "6566f147299bc6f1d941e64591ed04385416d543e11f96f564c7228f5018d0ed",
       "mode": 420
     },
-    "mattpocock-skills/writing-beats/agents/openai.yaml": {
-      "sha256": "ddaef01da61d8e3c5f482c4403033c20cf5823f08a1dbf1d4c871670831d01e2",
-      "mode": 420
-    },
-    "mattpocock-skills/writing-beats/LICENSE.upstream": {
-      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "mode": 420
-    },
-    "mattpocock-skills/writing-beats/PROVENANCE.json": {
-      "sha256": "0975d23aca34a3f415acda2b9a756e6c4fb793867d9f60f0512fdcfee2ab6192",
-      "mode": 420
-    },
-    "mattpocock-skills/writing-beats/SKILL.md": {
-      "sha256": "a96abafa2372eede8267d770138b322d6125da8adaa7ccf0a5e08e4ee13ee71e",
-      "mode": 420
-    },
     "mattpocock-skills/writing-for-agents/agents/openai.yaml": {
       "sha256": "eacb24b2a618cfb81dacb0416f4fdd75ddf3a8060f8ddb99aae1b1e301907e4b",
       "mode": 420
@@ -1574,38 +1294,6 @@
     },
     "mattpocock-skills/writing-for-agents/SKILL.md": {
       "sha256": "551adca942227b44192edba88acd4e8db911f0121ce58ad16944ccf6a896a74a",
-      "mode": 420
-    },
-    "mattpocock-skills/writing-fragments/agents/openai.yaml": {
-      "sha256": "81167f25ee8ea1bb4b4958f12b6702ea972ad31b05e03ec91e39fa4bae0c2641",
-      "mode": 420
-    },
-    "mattpocock-skills/writing-fragments/LICENSE.upstream": {
-      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "mode": 420
-    },
-    "mattpocock-skills/writing-fragments/PROVENANCE.json": {
-      "sha256": "8169430f9bd3c8d3c4ac31c093fb4ec8df0c61f3c6d00cf83f284e3fe5c2a2a9",
-      "mode": 420
-    },
-    "mattpocock-skills/writing-fragments/SKILL.md": {
-      "sha256": "298b0edd23df229183630de592ed8aa4289233560f2040691f6eb77caeaad4ea",
-      "mode": 420
-    },
-    "mattpocock-skills/writing-shape/agents/openai.yaml": {
-      "sha256": "56de45430e23104ff178415f5ecf7821d51a9cfabd8814b1607ebf39da2ef5cd",
-      "mode": 420
-    },
-    "mattpocock-skills/writing-shape/LICENSE.upstream": {
-      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "mode": 420
-    },
-    "mattpocock-skills/writing-shape/PROVENANCE.json": {
-      "sha256": "62811f91474c09c9160b45eaa0179433e95e56e7dac40c4ce3b8fe4b36ed5264",
-      "mode": 420
-    },
-    "mattpocock-skills/writing-shape/SKILL.md": {
-      "sha256": "f5e6c57bdd85178ace4a260c92f46da6b64ddee18215b461d875739c68976f72",
       "mode": 420
     },
     "shadcn-ui/migrate-radix-to-base/class-mapping.md": {
