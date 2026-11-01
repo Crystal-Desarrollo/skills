@@ -1,11 +1,11 @@
 {
   "source": "vercel-labs/skills",
   "canonicalRepository": "vercel-labs/skills",
-  "revision": "699d35b21bd3c97dbc0edeae062b2698898bb2e5",
+  "revision": "92a9a34ac3bf88e695e468b90c7bf32f163d32c8",
   "sourcePath": "skills/find-skills",
   "originalName": "find-skills",
   "installedName": "find-skills",
   "license": "MIT",
-  "licenseUrl": "https://github.com/vercel-labs/skills/blob/699d35b21bd3c97dbc0edeae062b2698898bb2e5/LICENSE",
+  "licenseUrl": "https://github.com/vercel-labs/skills/blob/92a9a34ac3bf88e695e468b90c7bf32f163d32c8/LICENSE",
   "adaptations": []
 }

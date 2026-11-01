@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogSha256": "92e928dd9d83d7af56495990e2db4f2061f5909ce2ecdb053a2e040cbb8bd899",
+  "catalogSha256": "e56a374feee5ef7d6bb8764ea01c48df467eac95f7fd61af953f2aba0877a921",
   "marketplace": {
     "sha256": "25fd24b6bc32561a38a6dd7f9067a8ead7d10d3852faf0d1bb008b01e66bff93",
     "mode": 420
@@ -9,24 +9,24 @@
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/ask-matt",
       "originalName": "ask-matt",
       "installedName": "ask-matt",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/ask-matt"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/code-review",
       "originalName": "code-review",
       "installedName": "mattpocock-skills-code-review",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [
         "Frontmatter name uses a source alias to avoid a collision."
       ],
@@ -35,336 +35,336 @@
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/codebase-design",
       "originalName": "codebase-design",
       "installedName": "codebase-design",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/codebase-design"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/diagnosing-bugs",
       "originalName": "diagnosing-bugs",
       "installedName": "diagnosing-bugs",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/diagnosing-bugs"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/domain-modeling",
       "originalName": "domain-modeling",
       "installedName": "domain-modeling",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/domain-modeling"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/grill-with-docs",
       "originalName": "grill-with-docs",
       "installedName": "grill-with-docs",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/grill-with-docs"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/implement-spec",
       "originalName": "implement-spec",
       "installedName": "implement-spec",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/implement-spec"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/implement",
       "originalName": "implement",
       "installedName": "implement",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/implement"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/improve-codebase-architecture",
       "originalName": "improve-codebase-architecture",
       "installedName": "improve-codebase-architecture",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/improve-codebase-architecture"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/pr",
       "originalName": "pr",
       "installedName": "pr",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/pr"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/prototype",
       "originalName": "prototype",
       "installedName": "prototype",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/prototype"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/research",
       "originalName": "research",
       "installedName": "research",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/research"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/retro",
       "originalName": "retro",
       "installedName": "retro",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/retro"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/setup-matt-pocock-skills",
       "originalName": "setup-matt-pocock-skills",
       "installedName": "setup-matt-pocock-skills",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/setup-matt-pocock-skills"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/tdd",
       "originalName": "tdd",
       "installedName": "tdd",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/tdd"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/to-spec",
       "originalName": "to-spec",
       "installedName": "to-spec",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/to-spec"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/to-tickets",
       "originalName": "to-tickets",
       "installedName": "to-tickets",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/to-tickets"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/triage",
       "originalName": "triage",
       "installedName": "triage",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/triage"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/wayfinder",
       "originalName": "wayfinder",
       "installedName": "wayfinder",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/wayfinder"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/engineering/wizard",
       "originalName": "wizard",
       "installedName": "wizard",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/wizard"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/productivity/grill-me",
       "originalName": "grill-me",
       "installedName": "grill-me",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/grill-me"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/productivity/grilling",
       "originalName": "grilling",
       "installedName": "grilling",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/grilling"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/productivity/handoff",
       "originalName": "handoff",
       "installedName": "handoff",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/handoff"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/productivity/teach",
       "originalName": "teach",
       "installedName": "teach",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/teach"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/productivity/to-questionnaire",
       "originalName": "to-questionnaire",
       "installedName": "to-questionnaire",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/to-questionnaire"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/productivity/wait-what",
       "originalName": "wait-what",
       "installedName": "wait-what",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/wait-what"
     },
     {
       "source": "mattpocock/skills",
       "canonicalRepository": "mattpocock/skills",
-      "revision": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
       "sourcePath": "skills/productivity/writing-for-agents",
       "originalName": "writing-for-agents",
       "installedName": "writing-for-agents",
       "license": "MIT",
-      "licenseUrl": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/LICENSE",
+      "licenseUrl": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE",
       "adaptations": [],
       "target": "mattpocock-skills/writing-for-agents"
     },
     {
       "source": "shadcn/ui",
       "canonicalRepository": "shadcn-ui/ui",
-      "revision": "96da9cc7f1aa10580a3741664e2a77c721206c00",
+      "revision": "c0d63c339d6cd2fc26135590a54cf1f362269451",
       "sourcePath": "skills/shadcn",
       "originalName": "shadcn",
       "installedName": "shadcn",
       "license": "MIT",
-      "licenseUrl": "https://github.com/shadcn-ui/ui/blob/96da9cc7f1aa10580a3741664e2a77c721206c00/LICENSE.md",
+      "licenseUrl": "https://github.com/shadcn-ui/ui/blob/c0d63c339d6cd2fc26135590a54cf1f362269451/LICENSE.md",
       "adaptations": [],
       "target": "shadcn-ui/shadcn"
     },
     {
       "source": "shadcn/ui",
       "canonicalRepository": "shadcn-ui/ui",
-      "revision": "96da9cc7f1aa10580a3741664e2a77c721206c00",
+      "revision": "c0d63c339d6cd2fc26135590a54cf1f362269451",
       "sourcePath": "skills/migrate-radix-to-base",
       "originalName": "migrate-radix-to-base",
       "installedName": "migrate-radix-to-base",
       "license": "MIT",
-      "licenseUrl": "https://github.com/shadcn-ui/ui/blob/96da9cc7f1aa10580a3741664e2a77c721206c00/LICENSE.md",
+      "licenseUrl": "https://github.com/shadcn-ui/ui/blob/c0d63c339d6cd2fc26135590a54cf1f362269451/LICENSE.md",
       "adaptations": [],
       "target": "shadcn-ui/migrate-radix-to-base"
     },
     {
       "source": "vercel-labs/skills",
       "canonicalRepository": "vercel-labs/skills",
-      "revision": "699d35b21bd3c97dbc0edeae062b2698898bb2e5",
+      "revision": "92a9a34ac3bf88e695e468b90c7bf32f163d32c8",
       "sourcePath": "skills/find-skills",
       "originalName": "find-skills",
       "installedName": "find-skills",
       "license": "MIT",
-      "licenseUrl": "https://github.com/vercel-labs/skills/blob/699d35b21bd3c97dbc0edeae062b2698898bb2e5/LICENSE",
+      "licenseUrl": "https://github.com/vercel-labs/skills/blob/92a9a34ac3bf88e695e468b90c7bf32f163d32c8/LICENSE",
       "adaptations": [],
       "target": "vercel-labs-skills/find-skills"
     },
@@ -457,84 +457,84 @@
     {
       "source": "antfu/skills",
       "canonicalRepository": "antfu/skills",
-      "revision": "8886fe2d385d3644cbb47e46ae9cb1cf09307d3b",
+      "revision": "7de210b51c8d48cc405a4eac3e17cbb1396c653b",
       "sourcePath": "skills/vite",
       "originalName": "vite",
       "installedName": "vite",
       "license": "MIT",
-      "licenseUrl": "https://github.com/antfu/skills/blob/8886fe2d385d3644cbb47e46ae9cb1cf09307d3b/LICENSE.md",
+      "licenseUrl": "https://github.com/antfu/skills/blob/7de210b51c8d48cc405a4eac3e17cbb1396c653b/LICENSE.md",
       "adaptations": [],
       "target": "antfu-skills/vite"
     },
     {
       "source": "antfu/skills",
       "canonicalRepository": "antfu/skills",
-      "revision": "8886fe2d385d3644cbb47e46ae9cb1cf09307d3b",
+      "revision": "7de210b51c8d48cc405a4eac3e17cbb1396c653b",
       "sourcePath": "skills/pnpm",
       "originalName": "pnpm",
       "installedName": "pnpm",
       "license": "MIT",
-      "licenseUrl": "https://github.com/antfu/skills/blob/8886fe2d385d3644cbb47e46ae9cb1cf09307d3b/LICENSE.md",
+      "licenseUrl": "https://github.com/antfu/skills/blob/7de210b51c8d48cc405a4eac3e17cbb1396c653b/LICENSE.md",
       "adaptations": [],
       "target": "antfu-skills/pnpm"
     },
     {
       "source": "antfu/skills",
       "canonicalRepository": "antfu/skills",
-      "revision": "8886fe2d385d3644cbb47e46ae9cb1cf09307d3b",
+      "revision": "7de210b51c8d48cc405a4eac3e17cbb1396c653b",
       "sourcePath": "skills/vitest",
       "originalName": "vitest",
       "installedName": "vitest",
       "license": "MIT",
-      "licenseUrl": "https://github.com/antfu/skills/blob/8886fe2d385d3644cbb47e46ae9cb1cf09307d3b/LICENSE.md",
+      "licenseUrl": "https://github.com/antfu/skills/blob/7de210b51c8d48cc405a4eac3e17cbb1396c653b/LICENSE.md",
       "adaptations": [],
       "target": "antfu-skills/vitest"
     },
     {
       "source": "wshobson/agents",
       "canonicalRepository": "wshobson/agents",
-      "revision": "0874a27b17a22e2b7c2e2bcd725768e0803cad06",
+      "revision": "7e2fb559cf4b824b27f1fec49fe88f7511066d26",
       "sourcePath": "plugins/frontend-mobile-development/skills/tailwind-design-system",
       "originalName": "tailwind-design-system",
       "installedName": "tailwind-design-system",
       "license": "MIT",
-      "licenseUrl": "https://github.com/wshobson/agents/blob/0874a27b17a22e2b7c2e2bcd725768e0803cad06/LICENSE",
+      "licenseUrl": "https://github.com/wshobson/agents/blob/7e2fb559cf4b824b27f1fec49fe88f7511066d26/LICENSE",
       "adaptations": [],
       "target": "wshobson-agents/tailwind-design-system"
     },
     {
       "source": "wshobson/agents",
       "canonicalRepository": "wshobson/agents",
-      "revision": "0874a27b17a22e2b7c2e2bcd725768e0803cad06",
+      "revision": "7e2fb559cf4b824b27f1fec49fe88f7511066d26",
       "sourcePath": "plugins/javascript-typescript/skills/typescript-advanced-types",
       "originalName": "typescript-advanced-types",
       "installedName": "typescript-advanced-types",
       "license": "MIT",
-      "licenseUrl": "https://github.com/wshobson/agents/blob/0874a27b17a22e2b7c2e2bcd725768e0803cad06/LICENSE",
+      "licenseUrl": "https://github.com/wshobson/agents/blob/7e2fb559cf4b824b27f1fec49fe88f7511066d26/LICENSE",
       "adaptations": [],
       "target": "wshobson-agents/typescript-advanced-types"
     },
     {
       "source": "wshobson/agents",
       "canonicalRepository": "wshobson/agents",
-      "revision": "0874a27b17a22e2b7c2e2bcd725768e0803cad06",
+      "revision": "7e2fb559cf4b824b27f1fec49fe88f7511066d26",
       "sourcePath": "plugins/ui-design/skills/responsive-design",
       "originalName": "responsive-design",
       "installedName": "responsive-design",
       "license": "MIT",
-      "licenseUrl": "https://github.com/wshobson/agents/blob/0874a27b17a22e2b7c2e2bcd725768e0803cad06/LICENSE",
+      "licenseUrl": "https://github.com/wshobson/agents/blob/7e2fb559cf4b824b27f1fec49fe88f7511066d26/LICENSE",
       "adaptations": [],
       "target": "wshobson-agents/responsive-design"
     },
     {
       "source": "wshobson/agents",
       "canonicalRepository": "wshobson/agents",
-      "revision": "0874a27b17a22e2b7c2e2bcd725768e0803cad06",
+      "revision": "7e2fb559cf4b824b27f1fec49fe88f7511066d26",
       "sourcePath": "plugins/avoid-ai-writing/skills/avoid-ai-writing",
       "originalName": "avoid-ai-writing",
       "installedName": "avoid-ai-writing",
       "license": "MIT",
-      "licenseUrl": "https://github.com/wshobson/agents/blob/0874a27b17a22e2b7c2e2bcd725768e0803cad06/LICENSE",
+      "licenseUrl": "https://github.com/wshobson/agents/blob/7e2fb559cf4b824b27f1fec49fe88f7511066d26/LICENSE",
       "adaptations": [],
       "target": "wshobson-agents/avoid-ai-writing"
     }
@@ -549,7 +549,7 @@
       "mode": 420
     },
     "antfu-skills/pnpm/PROVENANCE.json": {
-      "sha256": "b8e98d61c0c906de17e9b5f117e097dfbcd9f9b4f70e29417d3dd9ee1c99195f",
+      "sha256": "285c968f43401e25c404e3aafac6c5f759f9d8586d33f626db168aaf12b35da0",
       "mode": 420
     },
     "antfu-skills/pnpm/references/best-practices-ci.md": {
@@ -641,7 +641,7 @@
       "mode": 420
     },
     "antfu-skills/vite/PROVENANCE.json": {
-      "sha256": "d202dff2dde25db8562969b383b63a3da2ec864836357df6af400f9f319ae549",
+      "sha256": "e97ac0364a39685b237d27aa01e4bf9006723d432f69746128c0cfc540ee39a3",
       "mode": 420
     },
     "antfu-skills/vite/references/build-and-ssr.md": {
@@ -681,7 +681,7 @@
       "mode": 420
     },
     "antfu-skills/vitest/PROVENANCE.json": {
-      "sha256": "35266339c319c011e270e1472f1bb91e94eeacb89438562d17e727397c8dd07d",
+      "sha256": "67e1a31422c72f72944cbd3ac4aaf92a18920026d603b0bd9fe085ef3e6611da",
       "mode": 420
     },
     "antfu-skills/vitest/references/advanced-environments.md": {
@@ -777,7 +777,7 @@
       "mode": 420
     },
     "mattpocock-skills/ask-matt/PROVENANCE.json": {
-      "sha256": "079c9e3ccc6ef55fa0f1fb060ab280e830c6db9efe3bde9a4c34525e0c190be5",
+      "sha256": "2db7051404ebade8c82c5b4cf043d64d3aa748228973ffa4497cb25b0202799f",
       "mode": 420
     },
     "mattpocock-skills/ask-matt/SKILL.md": {
@@ -793,7 +793,7 @@
       "mode": 420
     },
     "mattpocock-skills/codebase-design/DESIGN-IT-TWICE.md": {
-      "sha256": "52b52e75655a27aea59c6966b410bac82448968ad46ef1ebb9f07c274e3ae010",
+      "sha256": "c222ab5a82e0405672eb9062d62496139a08828e45d07fc5f18e4952c10fac1a",
       "mode": 420
     },
     "mattpocock-skills/codebase-design/LICENSE.upstream": {
@@ -801,7 +801,7 @@
       "mode": 420
     },
     "mattpocock-skills/codebase-design/PROVENANCE.json": {
-      "sha256": "bd629d9090d603ca4ab997fecd9e9e0de8e94c526cb25b87840a0231bc12e96b",
+      "sha256": "642d7173a903ac8d402bd379e5dc222c97ecbdc707abd3adcd2241241e9ec004",
       "mode": 420
     },
     "mattpocock-skills/codebase-design/SKILL.md": {
@@ -817,7 +817,7 @@
       "mode": 420
     },
     "mattpocock-skills/diagnosing-bugs/PROVENANCE.json": {
-      "sha256": "0cd1db53921cb18bda367c67e583102b3e9e8a165082f55fc137e0694156d171",
+      "sha256": "ec498ddbd53e5498bad368775cb872395252c652f769bc8d1b673e3b91782fff",
       "mode": 420
     },
     "mattpocock-skills/diagnosing-bugs/scripts/hitl-loop.template.sh": {
@@ -845,7 +845,7 @@
       "mode": 420
     },
     "mattpocock-skills/domain-modeling/PROVENANCE.json": {
-      "sha256": "58ca05cafbe1851c0ff26767d381c047cc9fc91e1fb74b10cab8ecf779513423",
+      "sha256": "e4d357a2356353d0549fa31a8488ae1ae7f783afce6b9c4424f09d7811d5f042",
       "mode": 420
     },
     "mattpocock-skills/domain-modeling/SKILL.md": {
@@ -861,7 +861,7 @@
       "mode": 420
     },
     "mattpocock-skills/grill-me/PROVENANCE.json": {
-      "sha256": "f1b17f371c87e52ade14b8e3fd80a4d8ac6131afc862d78e9ae3f83ac0bbeaab",
+      "sha256": "a4da32ac096543acdb1f240aeabdac7486f2fba313fb39f44f21b294cb5cc967",
       "mode": 420
     },
     "mattpocock-skills/grill-me/SKILL.md": {
@@ -877,7 +877,7 @@
       "mode": 420
     },
     "mattpocock-skills/grill-with-docs/PROVENANCE.json": {
-      "sha256": "dddbc3ba72426a524e2ed777cad36a184fe9738cbc6ae86582c5f9d1f7a9693f",
+      "sha256": "e112f0ca70b174869e5cb89e55752c822d78128ba1fd55b2800d6a3e09b03b86",
       "mode": 420
     },
     "mattpocock-skills/grill-with-docs/SKILL.md": {
@@ -893,11 +893,11 @@
       "mode": 420
     },
     "mattpocock-skills/grilling/PROVENANCE.json": {
-      "sha256": "5a56c3991a192d7d0ea58a2336e51fa49c9db86ddfe1fe33cf53a54c38b464f3",
+      "sha256": "9ec0e2e8f3fbb47e9dd8494237b209eadc868a39b3a76775409b227327b917e6",
       "mode": 420
     },
     "mattpocock-skills/grilling/SKILL.md": {
-      "sha256": "befdff1e27a1dfe2a294d5871169ac1afe16d983911daa4f32627514a48c1e15",
+      "sha256": "a146842ed93ca43d833550fa9adf02e58cb63c83fea9d4b4522995b82242d4e2",
       "mode": 420
     },
     "mattpocock-skills/handoff/agents/openai.yaml": {
@@ -909,7 +909,7 @@
       "mode": 420
     },
     "mattpocock-skills/handoff/PROVENANCE.json": {
-      "sha256": "cfe287c8b345701333b703bade7dd04c58ada9b61c43426fc2f97f2ca5958830",
+      "sha256": "0b6d6df50b8d14dbfa9d1843e695aa55200f9a0ec33766419ceff2dec8b4ac75",
       "mode": 420
     },
     "mattpocock-skills/handoff/SKILL.md": {
@@ -925,11 +925,11 @@
       "mode": 420
     },
     "mattpocock-skills/implement-spec/PROVENANCE.json": {
-      "sha256": "8f75c94598efd01534ff5f650de6eb62cd16f5cb262f2e5aa725d3375e60add7",
+      "sha256": "6c3c6e05cac72142fdec6162aca5df74561494f5079c4fb6eea440cd341c1bf7",
       "mode": 420
     },
     "mattpocock-skills/implement-spec/SKILL.md": {
-      "sha256": "7a22dd2e60b8fcece478ced9d2533582adf3520d695acd3ab715341535c9e56d",
+      "sha256": "1993a473cec40ac85d081c112cdffdc63ec3267c2e412055ad09e013a2f623d1",
       "mode": 420
     },
     "mattpocock-skills/implement/agents/openai.yaml": {
@@ -941,7 +941,7 @@
       "mode": 420
     },
     "mattpocock-skills/implement/PROVENANCE.json": {
-      "sha256": "262d949fc7628a72e76b761af5b87569d79dc3d6583e90406611bcafa37763c5",
+      "sha256": "2059f68b7c03cc2c75e37bc39735ea8531f1de7f0033ebdafbfa719b09d2638f",
       "mode": 420
     },
     "mattpocock-skills/implement/SKILL.md": {
@@ -961,11 +961,11 @@
       "mode": 420
     },
     "mattpocock-skills/improve-codebase-architecture/PROVENANCE.json": {
-      "sha256": "b990c3c708be2ba21c34012dca64497f5e2923f28f6fdb766e0bb1a1dc916b8e",
+      "sha256": "e4b24d29f886ac421513c2cb81f34d1eb899bb6dd5311cd2e2352e9196079604",
       "mode": 420
     },
     "mattpocock-skills/improve-codebase-architecture/SKILL.md": {
-      "sha256": "552240a5ab5cec6b67c15dd1ad6e9f6962b1bca6ce870059a8c2713760c20392",
+      "sha256": "35b03a3db61e0f5aa333ea59b54963e45a3d2ace6649b2ef4f9576603e2582a6",
       "mode": 420
     },
     "mattpocock-skills/mattpocock-skills-code-review/agents/openai.yaml": {
@@ -977,11 +977,11 @@
       "mode": 420
     },
     "mattpocock-skills/mattpocock-skills-code-review/PROVENANCE.json": {
-      "sha256": "2014f9a2cc7357886a6885783fceae0cd63f6592e18a07be1bebe8852d5c29a3",
+      "sha256": "b34f1cb369b9e77c50fb07426962bc3a363a347349072093417fec9d06025503",
       "mode": 420
     },
     "mattpocock-skills/mattpocock-skills-code-review/SKILL.md": {
-      "sha256": "54b9a57a92684b3a4b5107bb851d3379c9dc080ed0e8c605a2f65d6963ccc0e6",
+      "sha256": "71300531d5f393a06e69d0272c699da2e7df49875e0143535afa8887423b9208",
       "mode": 420
     },
     "mattpocock-skills/pr/agents/openai.yaml": {
@@ -997,7 +997,7 @@
       "mode": 420
     },
     "mattpocock-skills/pr/PROVENANCE.json": {
-      "sha256": "6572557792bc71ae9964040cb4631fd58b441e960d7f8216b05a62d3040a034e",
+      "sha256": "89be0394bea9853c5a3f117fc9629f3c6764c643d38f259f23713d2e9217f072",
       "mode": 420
     },
     "mattpocock-skills/pr/SKILL.md": {
@@ -1017,7 +1017,7 @@
       "mode": 420
     },
     "mattpocock-skills/prototype/PROVENANCE.json": {
-      "sha256": "ad3b5339ff18d201259e7a56b29722ab12da81f43066a1b4eb705ce739967a4b",
+      "sha256": "8fbaaa4013edd6bd74d71b4c7d1f7cc0660b59dec66f1f0b153c3429ada1c187",
       "mode": 420
     },
     "mattpocock-skills/prototype/SKILL.md": {
@@ -1037,11 +1037,11 @@
       "mode": 420
     },
     "mattpocock-skills/research/PROVENANCE.json": {
-      "sha256": "6320d467708cadccc6e07f87574c3bc8608c5b431c6d976692ac96eed2fe5194",
+      "sha256": "09ccc46549821bda2cfc3f9683201916ace21adbad0291b32855083d254f6434",
       "mode": 420
     },
     "mattpocock-skills/research/SKILL.md": {
-      "sha256": "985569f15739c713d6784887c3d186d4ef9ac85bec5ad9c068d25bf0739928e4",
+      "sha256": "1f629e18ab899412683bc6a1c4efb4339999e27c2fdac328f26ee10a8c031d33",
       "mode": 420
     },
     "mattpocock-skills/retro/agents/openai.yaml": {
@@ -1053,7 +1053,7 @@
       "mode": 420
     },
     "mattpocock-skills/retro/PROVENANCE.json": {
-      "sha256": "7faee1993180b616ec3b8397460ec9a718f2c18625c73649e23d499eb4c29e78",
+      "sha256": "74611e8a4498d88c6017c50d22110d0dfa755ab030a27f3e347e4a21821fef71",
       "mode": 420
     },
     "mattpocock-skills/retro/SKILL.md": {
@@ -1085,7 +1085,7 @@
       "mode": 420
     },
     "mattpocock-skills/setup-matt-pocock-skills/PROVENANCE.json": {
-      "sha256": "9f3737bb8e283a1e2e919d63fe06e798f5d4783084bafec1fdf9a599452b5e53",
+      "sha256": "f8ea7ae2f3491c3e4420f93b82ce2cc8192c4eb2d9ec6b368be3c6268a271ca7",
       "mode": 420
     },
     "mattpocock-skills/setup-matt-pocock-skills/SKILL.md": {
@@ -1109,7 +1109,7 @@
       "mode": 420
     },
     "mattpocock-skills/tdd/PROVENANCE.json": {
-      "sha256": "96f0a5c885af332499864bbec1f1664305dd666763accd02f98569bbdbc7f714",
+      "sha256": "0e35babb8d2c43e8486e5dc4a938baa7b46d767541573b891566bd2b135ca578",
       "mode": 420
     },
     "mattpocock-skills/tdd/SKILL.md": {
@@ -1141,7 +1141,7 @@
       "mode": 420
     },
     "mattpocock-skills/teach/PROVENANCE.json": {
-      "sha256": "c5568d6a3e1c9832a44c71e9e653837f32a098e67dc46543bd2ff95bcb9a77fb",
+      "sha256": "9e3628b048508c995804045a9c4ffec874127663fc428581b12ce3eea91134fd",
       "mode": 420
     },
     "mattpocock-skills/teach/RESOURCES-FORMAT.md": {
@@ -1161,7 +1161,7 @@
       "mode": 420
     },
     "mattpocock-skills/to-questionnaire/PROVENANCE.json": {
-      "sha256": "13167dc237dd3d95d87667862634bfb1d354ef5317ee6b7b0615a82435c97960",
+      "sha256": "08930019b7f868921dd706febe43b267506ac883ebe6403023ae23c0cfe851a3",
       "mode": 420
     },
     "mattpocock-skills/to-questionnaire/SKILL.md": {
@@ -1177,7 +1177,7 @@
       "mode": 420
     },
     "mattpocock-skills/to-spec/PROVENANCE.json": {
-      "sha256": "529be394dec80e9b0a578e59b6b0bbc48b44bafd454e489e104e24fda1aa4e59",
+      "sha256": "4e970a71a8a722be3b4e75927e13a8b0dd2c3619605c10490162bc3ab7f83714",
       "mode": 420
     },
     "mattpocock-skills/to-spec/SKILL.md": {
@@ -1193,7 +1193,7 @@
       "mode": 420
     },
     "mattpocock-skills/to-tickets/PROVENANCE.json": {
-      "sha256": "810e1a9ea9e6731ed6cc96929ec0de796a7100c22ca91d396f8c4e7ceb324bd2",
+      "sha256": "476f0a3c7ad038e6661fc76cd53255a708da75a33e0e87dc1be35e960d449750",
       "mode": 420
     },
     "mattpocock-skills/to-tickets/SKILL.md": {
@@ -1217,7 +1217,7 @@
       "mode": 420
     },
     "mattpocock-skills/triage/PROVENANCE.json": {
-      "sha256": "854726faf36c6652b4a1bf4bafafa5ba0674bca9779452545d0ea3d4a5b98dc8",
+      "sha256": "2bf5f72bfe70b2971f25644e804f5b32983e72164ef7641ce70500e543face8f",
       "mode": 420
     },
     "mattpocock-skills/triage/SKILL.md": {
@@ -1233,7 +1233,7 @@
       "mode": 420
     },
     "mattpocock-skills/wait-what/PROVENANCE.json": {
-      "sha256": "6ace580515e844aefd881aa664736a8b49a7548ce20fd0bb3f6fbc2e0a380524",
+      "sha256": "71e7474d7a4c78f7e77287d1ed9d51240a857c887edd2ff0efd03a51c039c48f",
       "mode": 420
     },
     "mattpocock-skills/wait-what/SKILL.md": {
@@ -1249,11 +1249,11 @@
       "mode": 420
     },
     "mattpocock-skills/wayfinder/PROVENANCE.json": {
-      "sha256": "03d6db4d83ff9c85c07c37c247989793fd491434d6eec147675a27dad8dbdbfc",
+      "sha256": "8bcf830b9fbf70e5e5c6f52ea91d5c2e569ea147d7e7f1cab3081880237c5342",
       "mode": 420
     },
     "mattpocock-skills/wayfinder/SKILL.md": {
-      "sha256": "9be7b478c389605a24517d27752f278933588da97a1b5921b165f455edf4c5b7",
+      "sha256": "0c9fa96791aebf3b7d654cf35c6aadde97d81f57c17b07d13b27c14d9c46561f",
       "mode": 420
     },
     "mattpocock-skills/wizard/agents/openai.yaml": {
@@ -1265,7 +1265,7 @@
       "mode": 420
     },
     "mattpocock-skills/wizard/PROVENANCE.json": {
-      "sha256": "12e7d334b21fde6740939e3c96e80a69fbbc2e9c3f65a527a0b5b8cd776f3263",
+      "sha256": "12bfffb33827db986e080239aae3d60917242791b0ca6c038ee55ea3b6bd94e0",
       "mode": 420
     },
     "mattpocock-skills/wizard/SKILL.md": {
@@ -1285,7 +1285,7 @@
       "mode": 420
     },
     "mattpocock-skills/writing-for-agents/PROVENANCE.json": {
-      "sha256": "6d2fbbaa45f144e763da4b4579bdb1ce169539278c329dbf1e144c5ecb18b964",
+      "sha256": "886407f30a8fa3dc4fc9358b45a100d063ea22209b1f5483f473b119d13df700",
       "mode": 420
     },
     "mattpocock-skills/writing-for-agents/SKILL-MECHANICS.md": {
@@ -1329,7 +1329,7 @@
       "mode": 420
     },
     "shadcn-ui/migrate-radix-to-base/PROVENANCE.json": {
-      "sha256": "56008bd1acef4225715d9a6839f923f0ad7a541e5c5fd8de5892cb200f724423",
+      "sha256": "f46d1f15f4b19868751d312ced0a64cb49ad44d41a3c7d368c2a35b6da9c8737",
       "mode": 420
     },
     "shadcn-ui/migrate-radix-to-base/SKILL.md": {
@@ -1397,7 +1397,7 @@
       "mode": 420
     },
     "shadcn-ui/shadcn/PROVENANCE.json": {
-      "sha256": "a432e9174249099b231128bef9517705eea29a68ffa3bc30b03df37f9fbb11c7",
+      "sha256": "f29100a165b6fe271447e0bcdb7f41ec27a648de56254df69b01b6a5d481845f",
       "mode": 420
     },
     "shadcn-ui/shadcn/registry.md": {
@@ -1801,7 +1801,7 @@
       "mode": 420
     },
     "vercel-labs-skills/find-skills/PROVENANCE.json": {
-      "sha256": "5efe21a758bcf4087ab19323ea9f1db5293b3794b5fc92c0287f7859adc9689c",
+      "sha256": "c4f117cf9b04a32dcc1876724562dd582f42292d78c381ebdae20ea726870864",
       "mode": 420
     },
     "vercel-labs-skills/find-skills/SKILL.md": {
@@ -1813,7 +1813,7 @@
       "mode": 420
     },
     "wshobson-agents/avoid-ai-writing/PROVENANCE.json": {
-      "sha256": "0bc5299a528148b56926f5461386ff106f859dada8b1e6cff00ce4393e4c9520",
+      "sha256": "3ecdbe6dd4247069de8cba2051bdc108c958570d93e53f30ef76877559d88042",
       "mode": 420
     },
     "wshobson-agents/avoid-ai-writing/references/pattern-catalog.md": {
@@ -1837,7 +1837,7 @@
       "mode": 420
     },
     "wshobson-agents/responsive-design/PROVENANCE.json": {
-      "sha256": "adcceb04822f0d2d7337ba5ee8f7a94a2f9d2ae810f5c4c2c8f7d8992aa17457",
+      "sha256": "cd3e9840126fc8b712a81f112f4cd3fb133d5dbdf1f19bfde33467e31373de87",
       "mode": 420
     },
     "wshobson-agents/responsive-design/references/breakpoint-strategies.md": {
@@ -1865,7 +1865,7 @@
       "mode": 420
     },
     "wshobson-agents/tailwind-design-system/PROVENANCE.json": {
-      "sha256": "814e3bff087d709ca74aa13e130718c6c53ace13332553f35889995df11a1f70",
+      "sha256": "beb64f924dc7fd865697f503d50b1de06b0ab0f93b1588d78be5299c72cd1750",
       "mode": 420
     },
     "wshobson-agents/tailwind-design-system/references/advanced-patterns.md": {
@@ -1885,7 +1885,7 @@
       "mode": 420
     },
     "wshobson-agents/typescript-advanced-types/PROVENANCE.json": {
-      "sha256": "928d973f628e939b1ff859e0bde44b3b498b95d04e3375cdb11a0a7b18cd0926",
+      "sha256": "ca0c9a08992b55c2455a8f5def0f26be593d3dca50ef027f8c7401e9180636a4",
       "mode": 420
     },
     "wshobson-agents/typescript-advanced-types/references/details.md": {
