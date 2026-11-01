@@ -1,0 +1,11 @@
+{
+  "source": "antfu/skills",
+  "canonicalRepository": "antfu/skills",
+  "revision": "8886fe2d385d3644cbb47e46ae9cb1cf09307d3b",
+  "sourcePath": "skills/vitest",
+  "originalName": "vitest",
+  "installedName": "vitest",
+  "license": "MIT",
+  "licenseUrl": "https://github.com/antfu/skills/blob/8886fe2d385d3644cbb47e46ae9cb1cf09307d3b/LICENSE.md",
+  "adaptations": []
+}

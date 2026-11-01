@@ -1,0 +1,11 @@
+{
+  "source": "shadcn/ui",
+  "canonicalRepository": "shadcn-ui/ui",
+  "revision": "96da9cc7f1aa10580a3741664e2a77c721206c00",
+  "sourcePath": "skills/migrate-radix-to-base",
+  "originalName": "migrate-radix-to-base",
+  "installedName": "migrate-radix-to-base",
+  "license": "MIT",
+  "licenseUrl": "https://github.com/shadcn-ui/ui/blob/96da9cc7f1aa10580a3741664e2a77c721206c00/LICENSE.md",
+  "adaptations": []
+}

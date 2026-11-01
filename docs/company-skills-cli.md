@@ -18,7 +18,7 @@ pnpm --package=github:Crystal-Desarrollo/skills dlx crystal-skills init --skill 
 
 Use the same package command with `list` to inspect the catalog or `update --commit` to update recorded selections. For a fixed CLI revision, append `#<commit-sha>` to `github:Crystal-Desarrollo/skills`.
 
-The package includes its built JavaScript, catalog, and license. It has no consumer build hook and does not need a TypeScript compiler on the target machine. Keep package-manager trust checks enabled. The stock `pnpm dlx skills add Crystal-Desarrollo/skills` command still discovers only the owned skill folder; it does not run this catalog wrapper.
+The package includes its built JavaScript, catalog, and license. It has no consumer build hook and does not need a TypeScript compiler on the target machine. Keep package-manager trust checks enabled. The stock `pnpm dlx skills add Crystal-Desarrollo/skills` command discovers the owned skill plus vendored third-party snapshots. It does not run this catalog wrapper or make its optional scoped commit. The wrapper still installs directly from the catalog's upstream pins; its source-qualified IDs do not change.
 
 The default agent is the explicit safe target `opencode`. Repeat `--agent` for more targets. The CLI never detects agents from the host machine or writes to the global home directory.
 

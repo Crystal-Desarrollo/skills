@@ -1,6 +1,18 @@
 # Crystal skills
 
-Company-owned skills and an approved third-party catalog from Crystal Desarrollo.
+Company-owned skills and approved third-party snapshots from Crystal Desarrollo.
+
+## Install skills
+
+Run the stock Skills CLI from your project and select the skills to install:
+
+```bash
+pnpm dlx skills add Crystal-Desarrollo/skills
+```
+
+The repository contains 56 discoverable skills: the owned audit skill and 55 licensed third-party snapshots. Each third-party skill includes its supporting files, upstream license, and pinned provenance. The stock command does not make a commit.
+
+The two upstream `code-review` skills use unique names: `mattpocock-skills-code-review` and `vercel-labs-open-agents-code-review`. Three catalog entries remain unavailable until their license provenance is approved.
 
 ## Install from the company catalog
 
@@ -14,11 +26,11 @@ This uses the GitHub package directly. It needs no local checkout, npm publicati
 
 ## Company skill updates
 
-The monthly workflow proposes approved catalog revisions without automatic merging. See [catalog maintenance](docs/catalog-maintenance.md).
+Run `pnpm skills:sync` to copy approved pins, `pnpm skills:sync --update` to propose new pins and matching copies, or `pnpm skills:sync --check` for an offline integrity check. The monthly workflow proposes matching catalog and snapshot updates without automatic merging. See [catalog maintenance](docs/catalog-maintenance.md).
 
 ## Install only the owned audit skill
 
-The stock Skills CLI discovers skill folders, not the company catalog. This command installs only `shadcn-audit`:
+To select only the owned audit skill:
 
 ```bash
 pnpm dlx skills add Crystal-Desarrollo/skills --skill shadcn-audit
@@ -79,4 +91,4 @@ The skill needs no Python script, other installed skill, or CodeGraph at runtime
 
 ## License
 
-Copyright 2026 Crystal Desarrollo. Licensed under [Apache-2.0](LICENSE).
+Company-owned content: Copyright 2026 Crystal Desarrollo, [Apache-2.0](LICENSE). Third-party snapshots retain their upstream licenses in each skill's `LICENSE.upstream` and `PROVENANCE.json`.
