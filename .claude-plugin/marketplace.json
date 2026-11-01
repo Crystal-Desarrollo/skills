@@ -1,0 +1,89 @@
+{
+  "name": "crystal-skills",
+  "owner": {
+    "name": "Crystal Desarrollo"
+  },
+  "plugins": [
+    {
+      "name": "antfu",
+      "source": "./",
+      "skills": [
+        "./skills/vendor/antfu-skills/pnpm",
+        "./skills/vendor/antfu-skills/vite",
+        "./skills/vendor/antfu-skills/vitest"
+      ]
+    },
+    {
+      "name": "crystal-desarrollo",
+      "source": "./",
+      "skills": [
+        "./skills/shadcn-audit"
+      ]
+    },
+    {
+      "name": "matt-pocock",
+      "source": "./",
+      "skills": [
+        "./skills/vendor/mattpocock-skills/ask-matt",
+        "./skills/vendor/mattpocock-skills/codebase-design",
+        "./skills/vendor/mattpocock-skills/diagnosing-bugs",
+        "./skills/vendor/mattpocock-skills/domain-modeling",
+        "./skills/vendor/mattpocock-skills/grill-me",
+        "./skills/vendor/mattpocock-skills/grill-with-docs",
+        "./skills/vendor/mattpocock-skills/grilling",
+        "./skills/vendor/mattpocock-skills/handoff",
+        "./skills/vendor/mattpocock-skills/implement",
+        "./skills/vendor/mattpocock-skills/implement-spec",
+        "./skills/vendor/mattpocock-skills/improve-codebase-architecture",
+        "./skills/vendor/mattpocock-skills/mattpocock-skills-code-review",
+        "./skills/vendor/mattpocock-skills/pr",
+        "./skills/vendor/mattpocock-skills/prototype",
+        "./skills/vendor/mattpocock-skills/research",
+        "./skills/vendor/mattpocock-skills/retro",
+        "./skills/vendor/mattpocock-skills/setup-matt-pocock-skills",
+        "./skills/vendor/mattpocock-skills/tdd",
+        "./skills/vendor/mattpocock-skills/teach",
+        "./skills/vendor/mattpocock-skills/to-questionnaire",
+        "./skills/vendor/mattpocock-skills/to-spec",
+        "./skills/vendor/mattpocock-skills/to-tickets",
+        "./skills/vendor/mattpocock-skills/triage",
+        "./skills/vendor/mattpocock-skills/wait-what",
+        "./skills/vendor/mattpocock-skills/wayfinder",
+        "./skills/vendor/mattpocock-skills/wizard",
+        "./skills/vendor/mattpocock-skills/writing-for-agents"
+      ]
+    },
+    {
+      "name": "shadcn",
+      "source": "./",
+      "skills": [
+        "./skills/vendor/shadcn-ui/migrate-radix-to-base",
+        "./skills/vendor/shadcn-ui/shadcn"
+      ]
+    },
+    {
+      "name": "vercel-labs",
+      "source": "./",
+      "skills": [
+        "./skills/vendor/vercel-labs-open-agents/agent-browser",
+        "./skills/vendor/vercel-labs-open-agents/baseline-ui",
+        "./skills/vendor/vercel-labs-open-agents/emil-design-eng",
+        "./skills/vendor/vercel-labs-open-agents/frontend-design",
+        "./skills/vendor/vercel-labs-open-agents/vercel-labs-open-agents-code-review",
+        "./skills/vendor/vercel-labs-open-agents/vercel-react-best-practices",
+        "./skills/vendor/vercel-labs-open-agents/web-animation-design",
+        "./skills/vendor/vercel-labs-skills/find-skills"
+      ]
+    },
+    {
+      "name": "wshobson",
+      "source": "./",
+      "skills": [
+        "./skills/vendor/wshobson-agents/avoid-ai-writing",
+        "./skills/vendor/wshobson-agents/responsive-design",
+        "./skills/vendor/wshobson-agents/tailwind-design-system",
+        "./skills/vendor/wshobson-agents/typescript-advanced-types"
+      ]
+    }
+  ]
+}

@@ -1,10 +1,10 @@
-import { readFile, writeFile, lstat, mkdir, readdir, rename, rm, chmod } from 'node:fs/promises';
+import { readFile, writeFile, lstat, mkdir, readdir, rename, rm, rmdir, chmod } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateCatalog, inspectSource } from './catalog-updates.mjs';
 
-const usage = 'Usage: node scripts/sync-skills.mjs [--update | --check | --help]\nDefault: copy approved pins. --update: propose latest pins and copies. --check: verify local files offline.\n';
+const usage = 'Usage: node scripts/sync-skills.mjs [--update | --check | --help]\nDefault: copy approved pins and author groups. --update: propose latest pins and copies. --check: verify local files and author groups offline.\n';
 const owned = (source) => source.source.toLowerCase() === 'crystal-desarrollo/skills';
 const hash = (data) => createHash('sha256').update(data).digest('hex');
 const slug = (source) => source.id.replaceAll('/', '-');
@@ -40,14 +40,32 @@ async function listFiles(root, prefix = '') {
   return files.sort();
 }
 
-async function verify(vendor, catalogBytes, requireCatalog) {
+async function readMarketplace(root) {
+  const parent = path.join(root, '.claude-plugin'), file = path.join(parent, 'marketplace.json');
+  if (await info(parent)) await directory(parent);
+  if (!await info(file)) return null;
+  const stat = await regular(file);
+  return { bytes: await readFile(file), mode: stat.mode & 0o777 };
+}
+
+async function verify(vendor, catalogBytes, requireCatalog, marketplace) {
   const stat = await info(vendor);
-  if (!stat) { if (requireCatalog) throw Error('Snapshots missing; run skills:sync.'); return null; }
+  if (!stat) {
+    if (marketplace) throw Error('Unmanaged marketplace file; preserve it before syncing.');
+    if (requireCatalog) throw Error('Snapshots missing; run skills:sync.');
+    return null;
+  }
   await directory(vendor);
   await regular(path.join(vendor, manifestName));
   const manifest = JSON.parse(await readFile(path.join(vendor, manifestName), 'utf8'));
   if (manifest.schemaVersion !== 1 || !Array.isArray(manifest.skills) || !manifest.files || typeof manifest.files !== 'object' || Array.isArray(manifest.files)) throw Error('Invalid snapshot manifest.');
   if (requireCatalog && manifest.catalogSha256 !== hash(catalogBytes)) throw Error('Snapshot catalog integrity mismatch; run skills:sync after reviewing catalog changes.');
+  if (manifest.marketplace) {
+    if (!marketplace || manifest.marketplace.sha256 !== hash(marketplace.bytes) || manifest.marketplace.mode !== marketplace.mode) throw Error('Local author grouping metadata modified or missing; preserve edits before syncing.');
+  } else {
+    if (marketplace) throw Error('Unmanaged marketplace file; preserve it before syncing.');
+    if (requireCatalog) throw Error('Author grouping metadata missing; run skills:sync.');
+  }
   const expected = Object.keys(manifest.files).sort();
   if (expected.includes(manifestName) || expected.some((file) => !safeRelative(file))) throw Error('Invalid snapshot manifest paths.');
   const actual = (await listFiles(vendor)).filter((file) => file !== manifestName);
@@ -106,6 +124,22 @@ function renameSkill(data, original, installed) {
   const names = [...match[1].matchAll(/^name:\s*(?:"([^"\r\n]+)"|'([^'\r\n]+)'|([^\r\n]+))\s*$/gm)];
   if (names.length !== 1 || (names[0][1] ?? names[0][2] ?? names[0][3]).trim() !== original) throw Error(`Ambiguous or changed upstream skill name: ${original}`);
   return original === installed ? data : Buffer.from(text.replace(match[0], match[0].replace(names[0][0], `name: ${installed}`)));
+}
+
+function authorMarketplace(catalog, skills) {
+  const groups = new Map();
+  function add(source, skillPath) {
+    const owner = source.split('/')[0].toLowerCase();
+    const name = owner === 'mattpocock' ? 'matt-pocock' : owner;
+    if (!groups.has(name)) groups.set(name, []);
+    groups.get(name).push(`./${safeRelative(skillPath)}`);
+  }
+  for (const skill of skills) add(skill.source, `skills/vendor/${skill.target}`);
+  for (const source of catalog.sources.filter((entry) => owned(entry) && !entry.disabledReason)) {
+    for (const skill of source.skills) add(source.source, `skills/${skill.name}`);
+  }
+  const plugins = [...groups].sort(([a], [b]) => a.localeCompare(b)).map(([name, paths]) => ({ name, source: './', skills: paths.sort() }));
+  return Buffer.from(`${JSON.stringify({ name: 'crystal-skills', owner: { name: 'Crystal Desarrollo' }, plugins }, null, 2)}\n`);
 }
 
 async function build(catalog, original, stage, update, fetchImpl) {
@@ -171,44 +205,60 @@ async function build(catalog, original, stage, update, fetchImpl) {
     }
   }
   const catalogBytes = update ? Buffer.from(`${JSON.stringify(catalog, null, 2)}\n`) : original;
-  const manifest = { schemaVersion: 1, catalogSha256: hash(catalogBytes), skills, files: Object.fromEntries(Object.entries(files).sort(([a], [b]) => a.localeCompare(b))) };
+  const marketplace = { bytes: authorMarketplace(catalog, skills), mode: 0o644 };
+  const manifest = { schemaVersion: 1, catalogSha256: hash(catalogBytes), marketplace: { sha256: hash(marketplace.bytes), mode: marketplace.mode }, skills, files: Object.fromEntries(Object.entries(files).sort(([a], [b]) => a.localeCompare(b))) };
   await writeFile(path.join(stage, manifestName), `${JSON.stringify(manifest, null, 2)}\n`, { flag: 'wx' });
-  return { catalogBytes, count: skills.length };
+  return { catalogBytes, marketplace, count: skills.length };
 }
 
 export async function runCli(argv, { root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'), fetchImpl = globalThis.fetch, stdout = (text) => process.stdout.write(text), stderr = (text) => process.stderr.write(text) } = {}) {
   if (argv.length > 1 || (argv.length && !['--update', '--check', '--help'].includes(argv[0]))) { stderr(`Invalid sync option.\n${usage}`); return 2; }
   if (argv[0] === '--help') { stdout(usage); return 0; }
   const vendor = path.join(root, 'skills/vendor'), catalogFile = path.join(root, 'catalog.json'), lock = path.join(root, '.skills-sync.lock');
-  let locked = false, movedOld = false, movedNew = false, replacedCatalog = false, rollbackFailed = false;
+  const pluginParent = path.join(root, '.claude-plugin'), pluginFile = path.join(pluginParent, 'marketplace.json');
+  let locked = false, movedOld = false, movedNew = false, replacedCatalog = false, replacedMarketplace = false, createdPluginParent = false, rollbackFailed = false;
+  let originalMarketplace;
   try {
     await directory(root); await directory(path.join(root, 'skills')); await regular(catalogFile);
     if (await info(lock)) throw Error('Sync lock exists; another sync or interrupted transaction needs inspection.');
     if (argv[0] !== '--check') { await mkdir(lock); locked = true; }
     const original = await readFile(catalogFile), catalog = validateCatalog(JSON.parse(original));
-    const before = await verify(vendor, original, argv[0] === '--check');
+    originalMarketplace = await readMarketplace(root);
+    const before = await verify(vendor, original, argv[0] === '--check', originalMarketplace);
     if (argv[0] === '--check') { stdout(`Snapshot integrity verified: ${before.skills.length} skills.\n`); return 0; }
     const stage = path.join(lock, 'new-vendor'); await mkdir(stage);
-    const { catalogBytes, count } = await build(catalog, original, stage, argv[0] === '--update', publicFetch(fetchImpl));
-    await verify(stage, catalogBytes, true);
+    const { catalogBytes, marketplace, count } = await build(catalog, original, stage, argv[0] === '--update', publicFetch(fetchImpl));
+    await verify(stage, catalogBytes, true, marketplace);
     // Recheck local files after network access; do not overwrite edits made during downloads.
-    const now = await verify(vendor, original, false);
+    const currentMarketplace = await readMarketplace(root);
+    const now = await verify(vendor, original, false, currentMarketplace);
     if (JSON.stringify(now) !== JSON.stringify(before) || !(await readFile(catalogFile)).equals(original)) throw Error('Local files changed during sync.');
     const nextManifest = await readFile(path.join(stage, manifestName));
     if (before && nextManifest.equals(await readFile(path.join(vendor, manifestName))) && original.equals(catalogBytes)) { stdout(`Already synchronized: ${count} skills.\n`); return 0; }
     await writeFile(path.join(lock, 'original-catalog'), original, { flag: 'wx', mode: (await regular(catalogFile)).mode & 0o777 });
     await writeFile(path.join(lock, 'new-catalog'), catalogBytes, { flag: 'wx', mode: (await regular(catalogFile)).mode & 0o777 });
+    if (originalMarketplace) await writeFile(path.join(lock, 'original-marketplace'), originalMarketplace.bytes, { flag: 'wx', mode: originalMarketplace.mode });
+    await writeFile(path.join(lock, 'new-marketplace'), marketplace.bytes, { flag: 'wx', mode: marketplace.mode });
     if (before) { await rename(vendor, path.join(lock, 'old-vendor')); movedOld = true; }
     await rename(stage, vendor); movedNew = true;
     if (!original.equals(catalogBytes)) { await rename(path.join(lock, 'new-catalog'), catalogFile); replacedCatalog = true; }
+    if (!originalMarketplace || !originalMarketplace.bytes.equals(marketplace.bytes)) {
+      if (!await info(pluginParent)) { await mkdir(pluginParent); createdPluginParent = true; }
+      await directory(pluginParent);
+      await rename(path.join(lock, 'new-marketplace'), pluginFile); replacedMarketplace = true;
+    }
     stdout(`Synchronized ${count} skills at ${argv[0] === '--update' ? 'proposed latest revisions' : 'approved pins'}.\n`);
     return 0;
   } catch (error) {
-    try {
-      if (replacedCatalog) await rename(path.join(lock, 'original-catalog'), catalogFile);
-      if (movedNew) await rename(vendor, path.join(lock, 'failed-vendor'));
-      if (movedOld) await rename(path.join(lock, 'old-vendor'), vendor);
-    } catch { rollbackFailed = true; }
+    const restore = [];
+    if (replacedMarketplace) restore.push(() => rename(originalMarketplace ? path.join(lock, 'original-marketplace') : pluginFile, originalMarketplace ? pluginFile : path.join(lock, 'failed-marketplace')));
+    if (createdPluginParent) restore.push(() => rmdir(pluginParent));
+    if (replacedCatalog) restore.push(() => rename(path.join(lock, 'original-catalog'), catalogFile));
+    if (movedNew) restore.push(() => rename(vendor, path.join(lock, 'failed-vendor')));
+    if (movedOld) restore.push(() => rename(path.join(lock, 'old-vendor'), vendor));
+    for (const operation of restore) {
+      try { await operation(); } catch { rollbackFailed = true; }
+    }
     stderr(`${error.message}${rollbackFailed ? ' Recovery backup retained in .skills-sync.lock; inspect before retrying.' : ''}\n`);
     return 1;
   } finally {

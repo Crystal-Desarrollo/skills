@@ -38,11 +38,12 @@ jobs:
           add-paths: |
             catalog.json
             skills/vendor/
+            .claude-plugin/marketplace.json
           title: 'Propose approved skill snapshot updates'
           commit-message: 'chore: update approved skill snapshots'
           body: |
-            This pull request proposes public upstream revisions and matching skill snapshots.
+            This pull request proposes public upstream revisions, matching skill snapshots, and author groups.
 
-            Review catalog.json, skills/vendor/_manifest.json, and each changed skill with its license and PROVENANCE.json.
+            Review catalog.json, .claude-plugin/marketplace.json, skills/vendor/_manifest.json, and each changed skill with its license and PROVENANCE.json.
             Upstream content is copied as data and is not executed by this workflow.
             This workflow does not merge changes or install skills into consumer projects.
