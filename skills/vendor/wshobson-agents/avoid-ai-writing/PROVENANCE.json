@@ -1,0 +1,11 @@
+{
+  "source": "wshobson/agents",
+  "canonicalRepository": "wshobson/agents",
+  "revision": "0874a27b17a22e2b7c2e2bcd725768e0803cad06",
+  "sourcePath": "plugins/avoid-ai-writing/skills/avoid-ai-writing",
+  "originalName": "avoid-ai-writing",
+  "installedName": "avoid-ai-writing",
+  "license": "MIT",
+  "licenseUrl": "https://github.com/wshobson/agents/blob/0874a27b17a22e2b7c2e2bcd725768e0803cad06/LICENSE",
+  "adaptations": []
+}

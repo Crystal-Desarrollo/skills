@@ -7,7 +7,7 @@ const shaPattern = /^[a-f0-9]{40}$/i;
 const sourceIdPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*(?:\/[a-z0-9]+(?:-[a-z0-9]+)*)?$/;
 const usage = 'Usage: node scripts/catalog-updates.mjs (--check | --write) [--catalog PATH]\n';
 
-function validateCatalog(catalog) {
+export function validateCatalog(catalog) {
   if (!catalog || typeof catalog !== 'object' || Array.isArray(catalog) || catalog.schemaVersion !== 1 || !Array.isArray(catalog.sources)) throw new Error('Invalid catalog: expected schemaVersion 1 and sources array.');
   const ids = new Set();
   for (const source of catalog.sources) {
@@ -50,7 +50,7 @@ function rawLicenseUrl(source, revision, licensePath) {
   return `https://raw.githubusercontent.com/${source}/${revision}/${licensePath}`;
 }
 
-async function inspectSource(source, fetchImpl) {
+export async function inspectSource(source, fetchImpl) {
   const [owner, repo] = source.source.split('/');
   const root = `${API}/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}`;
   const repoData = await githubJson(fetchImpl, root);

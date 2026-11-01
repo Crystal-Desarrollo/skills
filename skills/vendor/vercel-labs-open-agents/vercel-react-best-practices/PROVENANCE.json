@@ -1,0 +1,11 @@
+{
+  "source": "vercel-labs/open-agents",
+  "canonicalRepository": "vercel-labs/open-agents",
+  "revision": "cf865e94de7729751c747171785b6ce57e7b178c",
+  "sourcePath": ".agents/skills/vercel-react-best-practices",
+  "originalName": "vercel-react-best-practices",
+  "installedName": "vercel-react-best-practices",
+  "license": "MIT",
+  "licenseUrl": "https://github.com/vercel-labs/open-agents/blob/cf865e94de7729751c747171785b6ce57e7b178c/LICENSE.md",
+  "adaptations": []
+}
