@@ -1,11 +1,11 @@
 {
   "source": "shadcn/ui",
   "canonicalRepository": "shadcn-ui/ui",
-  "revision": "96da9cc7f1aa10580a3741664e2a77c721206c00",
+  "revision": "c0d63c339d6cd2fc26135590a54cf1f362269451",
   "sourcePath": "skills/shadcn",
   "originalName": "shadcn",
   "installedName": "shadcn",
   "license": "MIT",
-  "licenseUrl": "https://github.com/shadcn-ui/ui/blob/96da9cc7f1aa10580a3741664e2a77c721206c00/LICENSE.md",
+  "licenseUrl": "https://github.com/shadcn-ui/ui/blob/c0d63c339d6cd2fc26135590a54cf1f362269451/LICENSE.md",
   "adaptations": []
 }
