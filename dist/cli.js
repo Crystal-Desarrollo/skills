@@ -60,6 +60,8 @@ function validateCatalog(catalog) {
             fail(`Invalid license URL: ${source.id}`);
         if (source.licensePath !== undefined && (!safeRelative(source.licensePath) || source.licensePath.includes('..')))
             fail(`Invalid license path: ${source.id}`);
+        if (source.noticePaths !== undefined && (!Array.isArray(source.noticePaths) || new Set(source.noticePaths).size !== source.noticePaths.length || source.noticePaths.some(file => typeof file !== 'string' || !/^(?:NOTICE|TRADEMARKS)(?:\.[A-Za-z0-9_-]+)?$/.test(file))))
+            fail(`Invalid notice paths: ${source.id}`);
         if ((source.revision === null || source.license === null) && !source.disabledReason)
             fail(`Unavailable source needs disabledReason: ${source.id}`);
         if (source.revision && source.license && (!source.licensePath || !source.licenseUrl.includes(`/blob/${source.revision}/${source.licensePath}`)))
@@ -67,6 +69,8 @@ function validateCatalog(catalog) {
         for (const skill of source.skills) {
             if (!skill || typeof skill.name !== 'string' || !/^[a-z0-9][a-z0-9._-]*$/i.test(skill.name))
                 fail(`Invalid skill name in ${source.id}`);
+            if (skill.path !== undefined && (!safeRelative(skill.path) || /[\x00-\x1f\x7f:]/.test(skill.path) || skill.path.split('/').some(part => part.toLowerCase() === '.git') || skill.path.split('/').at(-1) !== skill.name))
+                fail(`Invalid skill path in ${source.id}`);
             const id = `${source.id}/${skill.name}`;
             if (selectionIds.has(id))
                 fail(`Duplicate selection id: ${id}`);
@@ -237,7 +241,8 @@ function stagingEnv(env, home) {
     return safe;
 }
 async function publishedInstaller(request) {
-    const args = ['dlx', 'skills@1.7.4', 'add', `${request.source}#${request.revision}`];
+    const source = request.skillPath ? `https://github.com/${request.source}/tree/${request.revision}/${request.skillPath}` : `${request.source}#${request.revision}`;
+    const args = ['dlx', 'skills@1.7.4', 'add', source];
     for (const skill of request.skills)
         args.push('--skill', skill);
     for (const agent of request.agents)
@@ -433,7 +438,14 @@ async function installPlan(root, ids, agents, update, commit, deps, entries, pre
             fail(`Selected skills collide at installed name ${entry.skill.name}: ${previousId} and ${entry.id}`);
         nameOwners.set(key, entry.id);
     }
-    const desiredSources = [...new Map(chosen.map(entry => [entry.source.id, { id: entry.source.id, revision: entry.source.revision, license: entry.source.license, licenseUrl: entry.source.licenseUrl }])).values()];
+    const desiredSources = [...new Map(chosen.map(entry => {
+            const skillPaths = Object.fromEntries(chosen.filter(item => item.source.id === entry.source.id && item.skill.path).map(item => [item.skill.name, item.skill.path]));
+            return [entry.source.id, {
+                    id: entry.source.id, revision: entry.source.revision, license: entry.source.license, licenseUrl: entry.source.licenseUrl,
+                    ...(entry.source.noticePaths?.length ? { noticePaths: entry.source.noticePaths } : {}),
+                    ...(Object.keys(skillPaths).length ? { skillPaths } : {}),
+                }];
+        })).values()];
     if (previous && previous.selections.join('\0') === ids.join('\0') && previous.agents.join('\0') === agents.join('\0') && JSON.stringify(previous.sources) === JSON.stringify(desiredSources)) {
         const unchanged = Object.entries(previous.managedFiles).every(([path, hash]) => {
             const target = projectPath(root, path);
@@ -454,9 +466,10 @@ async function installPlan(root, ids, agents, update, commit, deps, entries, pre
     for (const entry of chosen)
         groups.set(entry.source.id, [...(groups.get(entry.source.id) ?? []), entry]);
     const installer = deps.installer ?? publishedInstaller;
-    for (const group of groups.values()) {
+    const installGroups = [...groups.values()].flatMap(group => group.some(entry => entry.skill.path) ? group.map(entry => [entry]) : [group]);
+    for (const group of installGroups) {
         const first = group[0];
-        await installer({ source: first.source.source, revision: first.source.revision, skills: group.map(entry => entry.skill.name), agents, staging: stage, env });
+        await installer({ source: first.source.source, revision: first.source.revision, ...(first.skill.path ? { skillPath: first.skill.path } : {}), skills: group.map(entry => entry.skill.name), agents, staging: stage, env });
     }
     const staged = collectFiles(stage);
     const fileModes = collectModes(stage);
@@ -501,6 +514,12 @@ async function installPlan(root, ids, agents, update, commit, deps, entries, pre
             fail(`License path collision: ${licenseTarget}`);
         staged.set(licenseTarget, Buffer.from(licenseBody));
         fileModes.set(licenseTarget, 0o644);
+        for (const noticePath of source.noticePaths ?? []) {
+            const body = await (deps.fetchLicense ?? fetchPinnedLicense)({ ...source, licensePath: noticePath });
+            const target = `${licenseTarget.slice(0, -'LICENSE'.length)}${noticePath}`;
+            staged.set(target, Buffer.from(body));
+            fileModes.set(target, 0o644);
+        }
     }
     const fileHashes = {};
     for (const [path, body] of staged) {

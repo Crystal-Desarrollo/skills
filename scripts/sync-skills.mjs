@@ -180,14 +180,22 @@ async function build(catalog, original, stage, update, fetchImpl) {
     const licenseEntry = tree.tree.find((entry) => entry.path === source.licensePath);
     if (!licenseEntry) throw Error(`License notice missing: ${source.id}`);
     const license = await blob(fetchImpl, repo, source.revision, licenseEntry);
+    const notices = [];
+    for (const noticePath of source.noticePaths ?? []) {
+      const entry = tree.tree.find((entry) => entry.path === noticePath);
+      if (!entry) throw Error(`Required notice missing: ${source.id}/${noticePath}`);
+      notices.push({ path: noticePath, data: await blob(fetchImpl, repo, source.revision, entry) });
+    }
     for (const skill of source.skills) {
-      const candidates = tree.tree.filter((entry) => entry.path.endsWith('/SKILL.md') && path.posix.basename(path.posix.dirname(entry.path)) === skill.name);
+      const candidates = tree.tree.filter((entry) => skill.path ? entry.path === `${skill.path}/SKILL.md` : entry.path.endsWith('/SKILL.md') && path.posix.basename(path.posix.dirname(entry.path)) === skill.name);
       if (candidates.length !== 1) throw Error(`Missing or ambiguous upstream path: ${source.id}/${skill.name}`);
       const sourcePath = path.posix.dirname(candidates[0].path), prefix = `${sourcePath}/`;
       const installed = names.get(skill.name) > 1 ? `${slug(source)}-${skill.name}` : skill.name;
       if (installedNames.has(installed)) throw Error(`Colliding installed skill name: ${installed}`); installedNames.add(installed);
       const target = `${slug(source)}/${installed}`, selected = tree.tree.filter((entry) => entry.path.startsWith(prefix) && entry.type !== 'tree');
-      if (selected.length > 1000) throw Error(`Too many files for skill: ${installed}`);
+      // Logo Design bundles its 1,400+ SVG reference library. Keep the global
+      // 3,000-file and 32 MiB limits in save() as well as this per-skill cap.
+      if (selected.length > 2000) throw Error(`Too many files for skill: ${installed}`);
       const provenance = { source: source.source, canonicalRepository: repo, revision: source.revision, sourcePath, originalName: skill.name, installedName: installed, license: source.license, licenseUrl: `https://github.com/${repo}/blob/${source.revision}/${source.licensePath}`, adaptations: installed === skill.name ? [] : ['Frontmatter name uses a source alias to avoid a collision.'] };
       // Fetch only files inside the selected skill, never execute their content.
       for (let offset = 0; offset < selected.length; offset += 6) {
@@ -200,6 +208,12 @@ async function build(catalog, original, stage, update, fetchImpl) {
         }
       }
       await save(`${target}/LICENSE.upstream`, license);
+      for (const notice of notices) {
+        const relative = `${target}/${notice.path}`;
+        if (Object.hasOwn(files, relative)) {
+          if (!(await readFile(path.join(stage, relative))).equals(notice.data)) throw Error(`Conflicting notice: ${relative}`);
+        } else await save(relative, notice.data);
+      }
       await save(`${target}/PROVENANCE.json`, Buffer.from(`${JSON.stringify(provenance, null, 2)}\n`));
       skills.push({ ...provenance, target });
     }

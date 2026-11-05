@@ -85,6 +85,72 @@ test('init installs selected skill files, all requested agent outputs, license, 
   } finally { rmSync(root, { recursive: true }); }
 });
 
+test('explicit skill paths reach the installer and required notices are managed with licenses', async () => {
+  const root = fixture();
+  try {
+    const configured = { ...source, noticePaths: ['NOTICE.md'], skills: [{ name: 'skill-one', path: '.agent/skills/skill-one' }] };
+    const fake = fakeInstaller();
+    const fetched: string[] = [];
+    const result = await invoke(['init', '--skill', 'test/source/skill-one'], root, {
+      catalog: { schemaVersion: 1, sources: [configured] }, installer: fake.installer,
+      fetchLicense: async (value: typeof source) => { fetched.push(value.licensePath!); return value.licensePath === 'NOTICE.md' ? 'Attribution\n' : licenseText; },
+    });
+    assert.equal(result.outcome.code, 0, result.stderr());
+    assert.equal(fake.calls[0].skillPath, '.agent/skills/skill-one');
+    assert.deepEqual(fetched, ['LICENSE', 'NOTICE.md']);
+    const notice = '.company-skills/licenses/test-source/NOTICE.md';
+    assert.equal(readFileSync(join(root, notice), 'utf8'), 'Attribution\n');
+    assert.ok(JSON.parse(readFileSync(join(root, '.company-skills.json'), 'utf8')).managedFiles[notice]);
+  } finally { rmSync(root, { recursive: true }); }
+});
+
+test('invalid skill and notice paths fail before invoking the installer', async () => {
+  for (const extra of [
+    { skills: [{ name: 'skill-one', path: '../skill-one' }] },
+    { skills: [{ name: 'skill-one', path: 'skills/other' }] },
+    { noticePaths: ['../NOTICE'] },
+    { noticePaths: ['NOTICE.md', 'NOTICE.md'] },
+  ]) {
+    const root = fixture();
+    try {
+      const fake = fakeInstaller();
+      const result = await invoke(['init', '--skill', 'test/source/skill-one'], root, {
+        catalog: { schemaVersion: 1, sources: [{ ...source, ...extra }] }, installer: fake.installer,
+      });
+      assert.equal(result.outcome.code, 1);
+      assert.equal(fake.calls.length, 0);
+      assert.deepEqual(readdirSync(root), []);
+    } finally { rmSync(root, { recursive: true }); }
+  }
+});
+
+test('notice download failures leave the target project untouched', async () => {
+  const root = fixture();
+  try {
+    const result = await invoke(['init', '--skill', 'test/source/skill-one'], root, {
+      catalog: { schemaVersion: 1, sources: [{ ...source, noticePaths: ['NOTICE.md'] }] }, installer: fakeInstaller().installer,
+      fetchLicense: async (value: typeof source) => { if (value.licensePath === 'NOTICE.md') throw Error('notice unavailable'); return licenseText; },
+    });
+    assert.equal(result.outcome.code, 1);
+    assert.match(result.stderr(), /notice unavailable/);
+    assert.deepEqual(readdirSync(root), []);
+  } finally { rmSync(root, { recursive: true }); }
+});
+
+test('adding required notices at the same pin does not take the no-op update path', async () => {
+  const root = fixture();
+  try {
+    const fake = fakeInstaller();
+    assert.equal((await invoke(['init', '--skill', 'test/source/skill-one'], root, { installer: fake.installer })).outcome.code, 0);
+    const result = await invoke(['update'], root, {
+      catalog: { schemaVersion: 1, sources: [{ ...source, noticePaths: ['NOTICE.md'] }] }, installer: fake.installer,
+    });
+    assert.equal(result.outcome.code, 0, result.stderr());
+    assert.equal(fake.calls.length, 2);
+    assert.equal(readFileSync(join(root, '.company-skills/licenses/test-source/NOTICE.md'), 'utf8'), licenseText);
+  } finally { rmSync(root, { recursive: true }); }
+});
+
 test('repeat init is a no-op and preserves unrelated files in managed directories', async () => {
   const root = fixture();
   try {

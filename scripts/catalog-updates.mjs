@@ -19,6 +19,10 @@ export function validateCatalog(catalog) {
       if (typeof source.disabledReason !== 'string' || !source.disabledReason.trim() || (source.revision !== null && !shaPattern.test(source.revision ?? '')) || source.license !== null) throw new Error(`Invalid disabled source ${source.id}.`);
     } else if (!shaPattern.test(source.revision ?? '') || typeof source.license !== 'string' || !source.license.trim() || typeof source.licenseUrl !== 'string' || !source.licenseUrl.startsWith('https://')) throw new Error(`Invalid pins for enabled source ${source.id}.`);
     if (source.licensePath !== undefined && (typeof source.licensePath !== 'string' || source.licensePath.startsWith('/') || source.licensePath.split('/').includes('..'))) throw new Error(`Invalid licensePath for ${source.id}.`);
+    if (source.noticePaths !== undefined && (!Array.isArray(source.noticePaths) || new Set(source.noticePaths).size !== source.noticePaths.length || source.noticePaths.some((file) => typeof file !== 'string' || !/^(?:NOTICE|TRADEMARKS)(?:\.[A-Za-z0-9_-]+)?$/.test(file)))) throw new Error(`Invalid noticePaths for ${source.id}.`);
+    for (const skill of source.skills) {
+      if (skill.path !== undefined && (typeof skill.path !== 'string' || /[\\\x00-\x1f\x7f:]/.test(skill.path) || skill.path.split('/').some((part) => !part || part === '.' || part === '..' || part.toLowerCase() === '.git') || skill.path.split('/').at(-1) !== skill.name)) throw new Error(`Invalid skill path for ${source.id}/${skill.name}.`);
+    }
   }
   return catalog;
 }

@@ -27,10 +27,32 @@ test('Matt selection matches his published plugin, excludes Other, and all insta
   assert.deepEqual(matt.skills.map((skill) => skill.name).sort(), expected);
   const manifest = JSON.parse(await readFile(new URL('skills/vendor/_manifest.json', root)));
   const marketplace = JSON.parse(await readFile(new URL('.claude-plugin/marketplace.json', root)));
-  assert.deepEqual(marketplace.plugins.map((plugin) => plugin.name), ['antfu', 'crystal-desarrollo', 'matt-pocock', 'shadcn', 'vercel-labs', 'wshobson']);
+  assert.deepEqual(marketplace.plugins.map((plugin) => plugin.name), ['antfu', 'crystal-desarrollo', 'kaankiziltug', 'matt-pocock', 'nextlevelbuilder', 'nutlope', 'pbakaus', 'shadcn', 'vercel-labs', 'wshobson']);
   const all = marketplace.plugins.flatMap((plugin) => plugin.skills);
-  assert.equal(all.length, 45); assert.equal(new Set(all).size, 45);
+  assert.equal(all.length, 49); assert.equal(new Set(all).size, 49);
   for (const skill of manifest.skills) assert.ok(all.includes(`./skills/vendor/${skill.target}`));
   assert.ok(all.includes('./skills/shadcn-audit'));
   for (const skill of manifest.skills.filter((entry) => entry.source === 'mattpocock/skills')) assert.match(skill.sourcePath, /^skills\/(engineering|productivity)\//);
+});
+
+test('frontend additions have fixed provenance and leave external and excluded skills out', async () => {
+  const root = new URL('../', import.meta.url);
+  const catalog = JSON.parse(await readFile(new URL('catalog.json', root)));
+  const additions = ['nutlope/hallmark', 'pbakaus/impeccable', 'nextlevelbuilder/ui-ux-pro-max-skill', 'kaankiziltug/logo-design-skill'];
+  const names = [];
+  for (const id of additions) {
+    const source = catalog.sources.find((entry) => entry.id === id);
+    assert.match(source.revision, /^[a-f0-9]{40}$/);
+    assert.ok(['MIT', 'Apache-2.0'].includes(source.license));
+    assert.ok(source.licenseUrl.includes(`/blob/${source.revision}/${source.licensePath}`));
+    names.push(...source.skills.map((skill) => skill.name));
+  }
+  assert.deepEqual(names.sort(), ['hallmark', 'impeccable', 'logo-design', 'ui-ux-pro-max']);
+  const all = catalog.sources.flatMap((source) => source.skills.map((skill) => skill.name));
+  for (const name of ['ui-taste', 'unslop', 'playwright-cli']) assert.ok(!all.includes(name));
+  const impeccable = catalog.sources.find((source) => source.id === 'pbakaus/impeccable');
+  assert.equal(impeccable.skills[0].path, '.agent/skills/impeccable');
+  assert.deepEqual(impeccable.noticePaths, ['NOTICE.md']);
+  const guide = await readFile(new URL('docs/frontend-skills.md', root), 'utf8');
+  assert.ok(guide.includes('pnpm dlx skills add https://uizze.sh --skill ui-taste --agent opencode'));
 });

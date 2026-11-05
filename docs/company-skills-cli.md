@@ -50,6 +50,10 @@ The Matt Pocock selection contains the 27 Engineering and Productivity skills de
 
 Pins are reviewed source snapshots, not endorsements of upstream safety. Review the exact skill content and license notice before approving catalog changes. The package requires Node.js 22.20 or newer.
 
+## Frontend selections
+
+Frontend selections, prerequisites, and the external UI Taste command are documented in [the frontend guide](frontend-skills.md). A catalog skill's explicit `path` selects the pinned upstream distribution when a repository contains multiple copies. Required source `noticePaths` are installed alongside its license in `.company-skills/licenses/<source-id>/`.
+
 ## Local development
 
 ```sh

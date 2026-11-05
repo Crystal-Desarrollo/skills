@@ -10,9 +10,9 @@ Run the stock Skills CLI from your project and select the skills to install:
 pnpm dlx skills add Crystal-Desarrollo/skills
 ```
 
-The repository contains 45 discoverable skills: the owned audit skill and 44 licensed third-party snapshots. The picker groups them by author and sorts skills alphabetically within each group. Each third-party skill includes its supporting files, upstream license, and pinned provenance. The stock command does not make a commit.
+The repository contains 49 discoverable skills: the owned audit skill and 48 licensed third-party snapshots. The picker groups them by author and sorts skills alphabetically within each group. Each third-party skill includes its supporting files, upstream license, and pinned provenance. The stock command does not make a commit.
 
-Author groups are Antfu, Crystal Desarrollo, Matt Pocock, Shadcn, Vercel Labs, and Wshobson. Matt's selection contains only his 27 published Engineering and Productivity skills; the 11 skills shown as `Other` in his upstream installer are excluded. Monthly sync preserves this explicit selection.
+Author groups are Antfu, Crystal Desarrollo, Kaankiziltug, Matt Pocock, Nextlevelbuilder, Nutlope, Pbakaus, Shadcn, Vercel Labs, and Wshobson. Matt's selection contains only his 27 published Engineering and Productivity skills; the 11 skills shown as `Other` in his upstream installer are excluded. Monthly sync preserves this explicit selection.
 
 The two upstream `code-review` skills use unique names: `mattpocock-skills-code-review` and `vercel-labs-open-agents-code-review`. Three catalog entries remain unavailable until their license provenance is approved.
 
@@ -29,6 +29,12 @@ This uses the GitHub package directly. It needs no local checkout, npm publicati
 ## Company skill updates
 
 Run `pnpm skills:sync` to copy approved pins, `pnpm skills:sync --update` to propose new pins and matching copies, or `pnpm skills:sync --check` for an offline integrity check. The monthly workflow proposes matching catalog and snapshot updates without automatic merging. See [catalog maintenance](docs/catalog-maintenance.md).
+
+## Frontend skills
+
+The frontend additions are `hallmark`, `impeccable`, `ui-ux-pro-max`, and `logo-design`. Install them per project; choose the design workflow that fits the task rather than combining every design skill. Existing React, shadcn, Tailwind, TypeScript, and Vite skills remain available.
+
+See [the frontend installation guide](docs/frontend-skills.md) for selection, prerequisites, examples, and the separate official `ui-taste` installation. UI Taste is distributed outside GitHub and is not bundled in this catalog. This addition does not include Playwright CLI, Unslop, Flutter skills, or the Three.js skill suite.
 
 ## Install only the owned audit skill
 
@@ -94,3 +100,4 @@ The skill needs no Python script, other installed skill, or CodeGraph at runtime
 ## License
 
 Company-owned content: Copyright 2026 Crystal Desarrollo, [Apache-2.0](LICENSE). Third-party snapshots retain their upstream licenses in each skill's `LICENSE.upstream` and `PROVENANCE.json`.
+Required attribution and trademark notices are included as well. Logo Design's reference SVGs are excluded from its MIT license; see its bundled `TRADEMARKS.md` before reuse.

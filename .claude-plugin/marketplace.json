@@ -21,6 +21,13 @@
       ]
     },
     {
+      "name": "kaankiziltug",
+      "source": "./",
+      "skills": [
+        "./skills/vendor/kaankiziltug-logo-design-skill/logo-design"
+      ]
+    },
+    {
       "name": "matt-pocock",
       "source": "./",
       "skills": [
@@ -51,6 +58,27 @@
         "./skills/vendor/mattpocock-skills/wayfinder",
         "./skills/vendor/mattpocock-skills/wizard",
         "./skills/vendor/mattpocock-skills/writing-for-agents"
+      ]
+    },
+    {
+      "name": "nextlevelbuilder",
+      "source": "./",
+      "skills": [
+        "./skills/vendor/nextlevelbuilder-ui-ux-pro-max-skill/ui-ux-pro-max"
+      ]
+    },
+    {
+      "name": "nutlope",
+      "source": "./",
+      "skills": [
+        "./skills/vendor/nutlope-hallmark/hallmark"
+      ]
+    },
+    {
+      "name": "pbakaus",
+      "source": "./",
+      "skills": [
+        "./skills/vendor/pbakaus-impeccable/impeccable"
       ]
     },
     {
