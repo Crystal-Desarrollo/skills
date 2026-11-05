@@ -11,15 +11,15 @@ import { tmpdir } from 'node:os';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 import type { Writable } from 'node:stream';
 
-export type Skill = { name: string; description?: string; disabledReason?: string };
+export type Skill = { name: string; path?: string; description?: string; disabledReason?: string };
 export type Source = {
   id: string; source: string; revision: string | null; license: string | null;
-  licenseUrl: string; licensePath?: string; skills: Skill[]; disabledReason?: string;
+  licenseUrl: string; licensePath?: string; noticePaths?: string[]; skills: Skill[]; disabledReason?: string;
 };
 export type Catalog = { schemaVersion: number; sources: Source[] };
-export type InstallerRequest = { source: string; revision: string; skills: string[]; agents: string[]; staging: string; env: NodeJS.ProcessEnv };
+export type InstallerRequest = { source: string; revision: string; skillPath?: string; skills: string[]; agents: string[]; staging: string; env: NodeJS.ProcessEnv };
 type Entry = { id: string; source: Source; skill: Skill };
-type RecordFile = { schemaVersion: number; selections: string[]; agents: string[]; managedFiles: Record<string, string>; sources: Array<{ id: string; revision: string; license: string; licenseUrl: string }>; checksum: string };
+type RecordFile = { schemaVersion: number; selections: string[]; agents: string[]; managedFiles: Record<string, string>; sources: Array<{ id: string; revision: string; license: string; licenseUrl: string; noticePaths?: string[]; skillPaths?: Record<string, string> }>; checksum: string };
 type NativeLock = { version: number; skills: Record<string, Record<string, unknown>>; [key: string]: unknown };
 type Options = { command: string; skills: string[]; agents: string[]; commit: boolean };
 type Dependencies = {
@@ -76,10 +76,12 @@ function validateCatalog(catalog: Catalog): Entry[] {
     if (source.license !== null && (typeof source.license !== 'string' || !/^[A-Za-z0-9.+-]+$/.test(source.license))) fail(`Invalid license: ${source.id}`);
     if (typeof source.licenseUrl !== 'string' || !source.licenseUrl.startsWith('https://')) fail(`Invalid license URL: ${source.id}`);
     if (source.licensePath !== undefined && (!safeRelative(source.licensePath) || source.licensePath.includes('..'))) fail(`Invalid license path: ${source.id}`);
+    if (source.noticePaths !== undefined && (!Array.isArray(source.noticePaths) || new Set(source.noticePaths).size !== source.noticePaths.length || source.noticePaths.some(file => typeof file !== 'string' || !/^(?:NOTICE|TRADEMARKS)(?:\.[A-Za-z0-9_-]+)?$/.test(file)))) fail(`Invalid notice paths: ${source.id}`);
     if ((source.revision === null || source.license === null) && !source.disabledReason) fail(`Unavailable source needs disabledReason: ${source.id}`);
     if (source.revision && source.license && (!source.licensePath || !source.licenseUrl.includes(`/blob/${source.revision}/${source.licensePath}`))) fail(`License URL must name the pinned source revision and license path: ${source.id}`);
     for (const skill of source.skills) {
       if (!skill || typeof skill.name !== 'string' || !/^[a-z0-9][a-z0-9._-]*$/i.test(skill.name)) fail(`Invalid skill name in ${source.id}`);
+      if (skill.path !== undefined && (!safeRelative(skill.path) || /[\x00-\x1f\x7f:]/.test(skill.path) || skill.path.split('/').some(part => part.toLowerCase() === '.git') || skill.path.split('/').at(-1) !== skill.name)) fail(`Invalid skill path in ${source.id}`);
       const id = `${source.id}/${skill.name}`;
       if (selectionIds.has(id)) fail(`Duplicate selection id: ${id}`);
       selectionIds.add(id);
@@ -196,7 +198,8 @@ function stagingEnv(env: NodeJS.ProcessEnv, home: string): NodeJS.ProcessEnv {
   return safe;
 }
 async function publishedInstaller(request: InstallerRequest): Promise<void> {
-  const args = ['dlx', 'skills@1.7.4', 'add', `${request.source}#${request.revision}`];
+  const source = request.skillPath ? `https://github.com/${request.source}/tree/${request.revision}/${request.skillPath}` : `${request.source}#${request.revision}`;
+  const args = ['dlx', 'skills@1.7.4', 'add', source];
   for (const skill of request.skills) args.push('--skill', skill);
   for (const agent of request.agents) args.push('--agent', agent);
   args.push('--yes', '--copy');
@@ -344,7 +347,14 @@ async function installPlan(root: string, ids: string[], agents: string[], update
     if (previousId) fail(`Selected skills collide at installed name ${entry.skill.name}: ${previousId} and ${entry.id}`);
     nameOwners.set(key, entry.id);
   }
-  const desiredSources = [...new Map(chosen.map(entry => [entry.source.id, { id: entry.source.id, revision: entry.source.revision!, license: entry.source.license!, licenseUrl: entry.source.licenseUrl }])).values()];
+  const desiredSources = [...new Map(chosen.map(entry => {
+    const skillPaths = Object.fromEntries(chosen.filter(item => item.source.id === entry.source.id && item.skill.path).map(item => [item.skill.name, item.skill.path!]));
+    return [entry.source.id, {
+      id: entry.source.id, revision: entry.source.revision!, license: entry.source.license!, licenseUrl: entry.source.licenseUrl,
+      ...(entry.source.noticePaths?.length ? { noticePaths: entry.source.noticePaths } : {}),
+      ...(Object.keys(skillPaths).length ? { skillPaths } : {}),
+    }];
+  })).values()];
   if (previous && previous.selections.join('\0') === ids.join('\0') && previous.agents.join('\0') === agents.join('\0') && JSON.stringify(previous.sources) === JSON.stringify(desiredSources)) {
     const unchanged = Object.entries(previous.managedFiles).every(([path, hash]) => {
       const target = projectPath(root, path);
@@ -361,9 +371,10 @@ async function installPlan(root: string, ids: string[], agents: string[], update
   const groups = new Map<string, Entry[]>();
   for (const entry of chosen) groups.set(entry.source.id, [...(groups.get(entry.source.id) ?? []), entry]);
   const installer = deps.installer ?? publishedInstaller;
-  for (const group of groups.values()) {
+  const installGroups = [...groups.values()].flatMap(group => group.some(entry => entry.skill.path) ? group.map(entry => [entry]) : [group]);
+  for (const group of installGroups) {
     const first = group[0];
-    await installer({ source: first.source.source, revision: first.source.revision!, skills: group.map(entry => entry.skill.name), agents, staging: stage, env });
+    await installer({ source: first.source.source, revision: first.source.revision!, ...(first.skill.path ? { skillPath: first.skill.path } : {}), skills: group.map(entry => entry.skill.name), agents, staging: stage, env });
   }
   const staged = collectFiles(stage);
   const fileModes = collectModes(stage);
@@ -395,6 +406,12 @@ async function installPlan(root: string, ids: string[], agents: string[], update
     if (staged.has(licenseTarget)) fail(`License path collision: ${licenseTarget}`);
     staged.set(licenseTarget, Buffer.from(licenseBody));
     fileModes.set(licenseTarget, 0o644);
+    for (const noticePath of source.noticePaths ?? []) {
+      const body = await (deps.fetchLicense ?? fetchPinnedLicense)({ ...source, licensePath: noticePath });
+      const target = `${licenseTarget.slice(0, -'LICENSE'.length)}${noticePath}`;
+      staged.set(target, Buffer.from(body));
+      fileModes.set(target, 0o644);
+    }
   }
   const fileHashes: Record<string, string> = {};
   for (const [path, body] of staged) {

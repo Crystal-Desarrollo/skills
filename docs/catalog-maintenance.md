@@ -34,6 +34,14 @@ Synchronization uses public HTTPS without ambient credentials. It verifies Git b
 
 Local snapshot or grouping-metadata edits, added files, removed files, and changed modes block replacement. An existing unmanaged marketplace file or a symlinked metadata directory also blocks sync. Preserve those edits separately before restoring approved snapshots. Do not delete local edits merely to clear a check. The first sync upgrades older snapshots that have no grouping metadata; it does not overwrite an existing unmanaged configuration.
 
+## Explicit upstream paths and notices
+
+A skill may declare `path` in `catalog.json` when upstream has multiple agent-specific copies, for example `.agent/skills/impeccable`. Sync and the company installer select that exact directory at the pinned revision; a missing path fails closed instead of selecting another distribution. Without `path`, sync still requires exactly one matching skill directory.
+
+A source may declare `noticePaths` for required root attribution files such as `NOTICE.md` or `TRADEMARKS.md`. Sync copies them into every selected skill and the company CLI records them alongside the source license. Missing or conflicting notices fail the operation. Existing notices inside skill directories remain unchanged. Logo Design's reference SVGs are excluded from its MIT license; preserve its trademark restrictions rather than describing the entire library as MIT-licensed.
+
+The per-skill file cap is 2,000 to include Logo Design's SVG reference library. The complete snapshot remains limited to 3,000 files and 32 MiB, with unchanged per-file validation. UI Taste is documented separately because its official domain-based source cannot be pinned by this GitHub-only catalog.
+
 ## Transaction recovery
 
 Writers use `.skills-sync.lock/` for exclusion, staging, and rollback backups. Ordinary download or validation failures leave the catalog, snapshots, and author metadata unchanged. The command rechecks local content before replacement and rolls back a failed replacement.

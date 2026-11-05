@@ -18,10 +18,11 @@ async function fixture(t, sources = [source()]) {
   await writeFile(path.join(root, 'catalog.json'), JSON.stringify({ schemaVersion: 1, extra: 'keep', sources }) + '\n');
   return root;
 }
-function network({ fail = false, mode = '100644', unsafe = false, ambiguous = false, license = 'MIT', changed = false } = {}) {
+function network({ fail = false, mode = '100644', unsafe = false, ambiguous = false, license = 'MIT', changed = false, notice = false } = {}) {
   const files = { 'LICENSE': 'Copyright Acme\nMIT\n', 'skills/one/SKILL.md': '---\nname: one\ndescription: Example\n---\n[Guide](references/guide.md)\n', 'skills/one/references/guide.md': 'Guide\n', 'skills/one/run.sh': '#!/bin/sh\nexit 0\n' };
   if (unsafe) files['skills/one/../escape'] = 'unsafe';
   if (ambiguous) files['other/one/SKILL.md'] = files['skills/one/SKILL.md'];
+  if (notice) files['NOTICE.md'] = 'Required attribution\n';
   const calls = [];
   const fetchImpl = async (input) => {
     const url = new URL(input); calls.push(url.href);
@@ -87,6 +88,32 @@ test('only colliding names get stable source aliases; disabled and owned sources
     assert.equal(JSON.parse(await readFile(path.join(target, 'PROVENANCE.json'))).originalName, 'one');
   }
   assert.ok(remote.calls.every((url) => !/disabled|crystal-desarrollo/i.test(url)));
+});
+
+test('explicit skill paths resolve duplicate upstream distributions and bundle required notices', async (t) => {
+  const root = await fixture(t, [{ ...source(), noticePaths: ['NOTICE.md'], skills: [{ name: 'one', path: 'skills/one' }] }]);
+  const result = await invoke(root, [], network({ ambiguous: true, notice: true }));
+  assert.equal(result.code, 0, result.stderr);
+  const target = path.join(root, 'skills/vendor/acme-skills/one');
+  assert.equal(await readFile(path.join(target, 'NOTICE.md'), 'utf8'), 'Required attribution\n');
+  assert.equal(JSON.parse(await readFile(path.join(target, 'PROVENANCE.json'))).sourcePath, 'skills/one');
+  assert.equal((await invoke(root, ['--check'])).code, 0);
+});
+
+test('missing explicit paths, missing notices, and unsafe catalog paths fail without replacement', async (t) => {
+  for (const extra of [
+    { skills: [{ name: 'one', path: 'missing/one' }] },
+    { skills: [{ name: 'one', path: '../one' }] },
+    { skills: [{ name: 'one', path: 'skills/other' }] },
+    { noticePaths: ['NOTICE.md'] },
+    { noticePaths: ['../NOTICE'] },
+    { noticePaths: ['NOTICE', 'NOTICE'] },
+  ]) {
+    const root = await fixture(t, [{ ...source(), ...extra }]), before = await bytes(root);
+    const result = await invoke(root, [], network());
+    assert.equal(result.code, 1);
+    assert.deepEqual(await bytes(root), before);
+  }
 });
 
 test('update uses the shared revision and license resolver and writes matching snapshots and blob URLs', async (t) => {
